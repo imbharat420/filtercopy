@@ -33,8 +33,8 @@ app.set('json spaces', 2);
 // app.set('view cache', true);
 app.use(
   cors({
-    credentials: true,
-    origin: true,
+    // credentials: true,
+    // origin: true,
   })
 );
 

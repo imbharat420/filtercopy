@@ -27,7 +27,7 @@ const reducer = (state = states, action) => {
     case 'CHANGE_EFFECT':
       return { ...state, effects: action.payload };
     case 'CHANGE_IMAGE':
-      return { ...state, image: action.payload };
+      return { ...state, image: action.payload.url };
     default:
       return state;
   }

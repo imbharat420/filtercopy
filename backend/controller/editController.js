@@ -10,29 +10,35 @@ const __dirname = dirname(fileURLToPath(import.meta.url));
 // import formidable from 'formidable';
 import FormData from "form-data"
 
-const uploadController = asyncHandler(async (req,res)=>{  
+const uploadController = asyncHandler(async (req,res)=>{ 
     if(!req.file){
         return res.status(400).json({message:"file is required"});
     }
 
-    const filePath = path.join(__dirname, '../uploads/'+ req.file.filename);
+    try{
+        const filePath = path.join(__dirname, '../uploads/'+ req.file.filename);
 
-    const formData = new FormData()
-    formData.append("file",fs.createReadStream(filePath))
-    formData.append("name",req.file.originalname)
-    
+        const formData = new FormData()
+        formData.append("file",fs.createReadStream(filePath))
+       formData.append("name",req.file.originalname)
 
-    let {data} = await axios({
-        method:"POST" ,
-        url: process.env.UPLOAD,
-        data:formData,
-        headers: { "Content-Type": "multipart/form-data" }, 
-    })
-
-    return res.status(200).json({
-        id:data.id,
-        name:req.file.filename
-    });
+       let {data} =  await axios({
+            method:"POST" ,
+            url: process.env.UPLOAD,
+            data:formData,
+            headers: { "Content-Type": "multipart/form-data" }, 
+        })
+        
+        res.status(200).json({
+            id:data.id,
+            name:req.file.filename,
+            ...data
+        });
+    }catch(err){
+         res.status(400).send({
+            message:err.message
+        }); 
+    }
 })
 
 

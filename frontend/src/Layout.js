@@ -32,7 +32,7 @@ export const Wrapper = styled.div`
 export const Icon = styled.div`
     margin-bottom: 10px;
     background-image: url(${img});
-    background-repeat: no-repeat;
+    background-repeat: no-repeat; 
     ${({ icon }) =>
       icon === `artistic` &&
       css`
