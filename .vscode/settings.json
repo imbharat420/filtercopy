@@ -1,0 +1,6 @@
+{
+    "git.autocommit": true,
+    "git.autocommitAndPushOnSave.enabled": true,
+    "git.autocommit.filenameAsMessage": true,
+    "git.autocommit.message": "${file}: ${input}"
+}
