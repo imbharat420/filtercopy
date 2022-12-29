@@ -2,28 +2,30 @@ import { useState,useContext, useEffect } from "react";
 import Upload from "../components/Upload";
 import Image from "../components/Image";
 import Sidebar from "../components/Sidebar";
+import Zone from "../components/Zone";
 import Subsidebar from "../components/Subsidebar";
 import styled from "styled-components"
 
 import bg from "../assets/bg.jpg"
 
 
-import data from "../assets/data1.json"
+
 
 
 import {StoreContext} from "../state/store"
 
+import Input from "./Input"
+import Markdown from "./Markdown";
+
 const Home = ()=>{
     const { state, dispatch } = useContext(StoreContext)
-    useEffect(()=>{
-          dispatch({ type: 'CHANGE_EFFECT', payload: data.sidebar});     
-    },[dispatch])
     
     return(
        <Wrapper>
         {/* <button onClick={()=>console.log(state)}>Click</button> */}
-            <Sidebar sidebarData={state}/>
-            <Subsidebar sidebarData={state}/>
+            <Sidebar/>
+            <Subsidebar/>
+            <Zone/>
             <Content>
                 <Upload/>
                 <Image />

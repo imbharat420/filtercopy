@@ -1,6 +1,7 @@
 import styled, { css } from 'styled-components';
 import img from './assets/sprite.png';
 import xmass from './assets/xmass.png';
+import overlays from './assets/overlays.png';
 
 export const Wrapper = styled.div`
   height: 100vh;
@@ -50,7 +51,7 @@ export const Icon = styled.div`
     ${({ icon }) =>
       icon === `e-cards` &&
       css`
-        background-position: -57px -118px;
+        background-position: -121px -118px;
         width: 28px;
         height: 17px;
       `}}
@@ -69,4 +70,11 @@ export const Icon = styled.div`
         width: 28px;
         height: 17px;
       `}}
+     ${({ icon }) =>
+       icon === `overlays` &&
+       css`
+         background-image: url(${overlays});
+         width: 22px;
+         height: 20px;
+       `}}
 `;

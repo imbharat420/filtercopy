@@ -1,51 +1,31 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useContext } from 'react';
 import styled, { css } from 'styled-components';
 
 import { Icon, Wrapper } from '../Layout';
+import { StoreContext } from '../state/store';
 
-const Sidebar = ({ sidebarData }) => {
+const Sidebar = ({ clicHandler }) => {
+  const { state, dispatch } = useContext(StoreContext);
   return (
     <Wrapper>
       <ul className="categories">
-        <li key={'index'}>
-          <div id="item">
-            <Icon icon="artistic"></Icon>
-            <span>Artistic</span>
-          </div>
-        </li>
-        {/* <li key={'index'}>
-          <div id="item">
-            <Icon icon="christmas"></Icon>
-            <span>Artistic</span>
-          </div>
-        </li>
-        <li key={'index'}>
-          <div id="item">
-            <Icon icon="e-cards"></Icon>
-            <span>Artistic</span>
-          </div>
-        </li>
-        <li key={'index'}>
-          <div id="item">
-            <Icon icon="e-cards"></Icon>
-            <span>Artistic</span>
-          </div>
-        </li> */}
+        {state?.effects &&
+          state?.effects.map((effect, index) => (
+            <li
+              key={effect.name}
+              onClick={() =>
+                dispatch({ type: 'SIDEBAR_INDEX', payload: index })
+              }
+            >
+              <div id="item">
+                <Icon icon={`${effect.name.toLowerCase()}`}></Icon>
+                <span>{effect.name}</span>
+              </div>
+            </li>
+          ))}
       </ul>
     </Wrapper>
   );
 };
 
 export default Sidebar;
-
-/*
-  {sidebarData && sidebarData.effects.map((item,index)=>{
-                    return(
-                        <li key={index}>
-                            <div id={item.id}>
-                              
-                                <span>{item.name}</span>
-                            </div>
-                        </li>
-                 )})}
-                 */

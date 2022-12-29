@@ -8,7 +8,7 @@ const Image = () => {
 
   return (
     <ImageContainer>
-      {state?.image && <img src={state.image} alt="Selected image" />}
+      {state?.image && <img src={state.image.url} alt="Selected image" />}
     </ImageContainer>
   );
 };

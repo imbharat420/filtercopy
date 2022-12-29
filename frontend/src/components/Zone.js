@@ -1,19 +1,47 @@
-import { useContext } from 'react';
+import { useContext, useState } from 'react';
 import styled from 'styled-components';
 import { StoreContext } from '../state/store';
-const SubSidebar = () => {
+import AxiosHandler from '../api/AxiosHandler';
+
+const filterAxios = async (formData) => {
+  console.log('formData', formData);
+  let axios = AxiosHandler();
+  try {
+    const { data } = await axios.post('/edit/render', formData);
+    console.log(data);
+    return data;
+  } catch (err) {
+    console.log('Error : ', err);
+  }
+};
+
+const Zone = () => {
   const { state, dispatch } = useContext(StoreContext);
+
+  const [image, setImage] = useState(null);
+  const filterImage = async (id) => {
+    const filterData = {
+      effectId: id,
+      photoId: state.image.id,
+    };
+    console.log(filterData);
+    let data = await filterAxios(filterData);
+    console.log(data);
+    if (data) {
+      dispatch({ payload: data, type: 'CHANGE_IMAGE' });
+    }
+  };
   console.log(state);
   return (
     <Wrapper className="effects-zone">
       <ul>
-        {state.effects[state.currentEffectIndex].zones.map((zone, index) => (
+        {state.effects[state.currentEffectIndex].zones[
+          state.currentZoneIndex
+        ].effects.map((zone, index) => (
           <li
             className="zone-item"
             key={`${zone.name}`}
-            onClick={() =>
-              dispatch({ type: 'SIDEBAR_ZONE_INDEX', payload: index })
-            }
+            onClick={() => filterImage(`${zone.api_id}`)}
           >
             <img
               src={`https://${zone.image_url}`}
@@ -28,7 +56,8 @@ const SubSidebar = () => {
   );
 };
 
-export default SubSidebar;
+export default Zone;
+
 const Wrapper = styled.div`
   height: 100vh;
   overflow-y: auto;
