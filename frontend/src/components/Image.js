@@ -8,7 +8,9 @@ const Image = () => {
 
   return (
     <ImageContainer>
-      {state?.image && <img src={state.image.url} alt="Selected image" />}
+      {state?.filteredImage?.url && (
+        <img src={state.filteredImage?.url} alt="uploaded Content" />
+      )}
     </ImageContainer>
   );
 };

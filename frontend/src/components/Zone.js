@@ -28,7 +28,7 @@ const Zone = () => {
     let data = await filterAxios(filterData);
     console.log(data);
     if (data) {
-      dispatch({ payload: data, type: 'CHANGE_IMAGE' });
+      dispatch({ payload: data, type: 'CHANGE_FILTER_IMAGE' });
     }
   };
   console.log(state);

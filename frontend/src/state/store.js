@@ -14,7 +14,9 @@ const states = {
   //     },
   //   ],
   // },
-  image: '',
+  image: {},
+  filteredImage: {},
+  history: [],
   currentEffectIndex: 0,
   currentZoneIndex: 0,
   currentEffectName: '',
@@ -30,7 +32,13 @@ const reducer = (state = states, action) => {
     case 'CHANGE_EFFECT':
       return { ...state, effects: payload };
     case 'CHANGE_IMAGE':
-      return { ...state, image: payload };
+      return { ...state, image: payload, filteredImage: payload };
+    case 'CHANGE_FILTER_IMAGE':
+      return {
+        ...state,
+        filteredImage: payload,
+        history: [...state.history, payload],
+      };
     case 'SIDEBAR_INDEX':
       return {
         ...state,
