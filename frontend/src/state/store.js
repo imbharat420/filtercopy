@@ -5,15 +5,7 @@ console.log(data);
 const states = {
   effects: data['sidebar'],
   currentEffect: {},
-  // images: {
-  //   original: '',
-  //   edited: [
-  //     {
-  //       name: 'Artistic',
-  //       link: '',
-  //     },
-  //   ],
-  // },
+  loading: false,
   image: {},
   filteredImage: {},
   history: [],
@@ -28,15 +20,21 @@ const states = {
 const StoreContext = createContext();
 const reducer = (state = states, action) => {
   const { type, payload } = action;
-  switch (action.type) {
+  switch (type) {
     case 'CHANGE_EFFECT':
-      return { ...state, effects: payload };
+      return { ...state, effects: payload, loading: false };
     case 'CHANGE_IMAGE':
-      return { ...state, image: payload, filteredImage: payload };
+      return {
+        ...state,
+        image: payload,
+        filteredImage: payload,
+        loading: false,
+      };
     case 'CHANGE_FILTER_IMAGE':
       return {
         ...state,
         filteredImage: payload,
+        loading: false,
         history: [...state.history, payload],
       };
     case 'SIDEBAR_INDEX':
@@ -47,7 +45,10 @@ const reducer = (state = states, action) => {
       };
     case 'SIDEBAR_ZONE_INDEX':
       return { ...state, currentZoneIndex: payload };
-
+    case 'LOADING':
+      return { ...state, loading: true };
+    case 'REMOVE_IMAGE':
+      return { ...state, image: {}, filteredImage: {}, history: [] };
     default:
       return state;
   }

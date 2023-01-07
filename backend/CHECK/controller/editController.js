@@ -10,20 +10,6 @@ const __dirname = dirname(fileURLToPath(import.meta.url));
 // import formidable from 'formidable';
 import FormData from 'form-data';
 
-import request from 'request';
-
-function convertImageToBase64(imageUrl) {
-  return new Promise((resolve, reject) => {
-    request.get(imageUrl, { encoding: null }, (error, response, body) => {
-      if (error) {
-        reject(error);
-      } else {
-        resolve(Buffer.from(body, 'binary').toString('base64'));
-      }
-    });
-  });
-}
-
 const uploadController = asyncHandler(async (req, res) => {
   if (!req.file) {
     return res.status(400).json({ message: 'file is required' });
@@ -47,7 +33,7 @@ const uploadController = asyncHandler(async (req, res) => {
         ...formFile.getHeaders(),
       },
     });
-    console.log(data);
+
     res.status(200).json({
       id: data.id,
       name: req.file.filename,

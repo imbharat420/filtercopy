@@ -1,31 +1,22 @@
-import { useEffect, useState, useContext } from 'react';
-import styled from 'styled-components';
-import axios from 'axios';
+import { useContext } from 'react';
 import { StoreContext } from '../state/store';
+import { ImageContainer } from './styled';
+
 const Image = () => {
   const { state } = useContext(StoreContext);
-  const [data, setData] = useState([]);
 
   return (
     <ImageContainer>
       {state?.filteredImage?.url && (
-        <img src={state.filteredImage?.url} alt="uploaded Content" />
+        <img
+          src={state.filteredImage?.url}
+          alt="uploaded Content"
+          width={`${state.filteredImage?.width}px`}
+          height={`${state.filteredImage?.height}px`}
+        />
       )}
     </ImageContainer>
   );
 };
 
 export default Image;
-
-const ImageContainer = styled.div`
-  padding: 2rem;
-  width: 100%;
-  height: 100%;
-  bacground: #fff;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  img {
-    height: 100%;
-  }
-`;

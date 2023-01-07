@@ -1,35 +1,35 @@
-import { useState,useContext, useEffect } from "react";
-import Upload from "../components/Upload";
+import {useContext} from "react";
+import Remove from "../components/Remove";
 import Image from "../components/Image";
 import Sidebar from "../components/Sidebar";
 import Zone from "../components/Zone";
 import Subsidebar from "../components/Subsidebar";
 import styled from "styled-components"
 
-import bg from "../assets/bg.jpg"
+// import bg from "../assets/bg.jpg"
 
-
+import DragAndDropImage from "../components/DragAndDropImage";
 
 
 
 import {StoreContext} from "../state/store"
 
-import Input from "./Input"
-import Markdown from "./Markdown";
 
 const Home = ()=>{
     const { state, dispatch } = useContext(StoreContext)
-    
+    console.log(state)
     return(
        <Wrapper>
-        {/* <button onClick={()=>console.log(state)}>Click</button> */}
             <Sidebar/>
             <Subsidebar/>
             <Zone/>
             <Content>
-                <Upload/>
-                <Image />
-            </Content>       
+                {state.image?.url !== undefined ? (
+                  <> 
+                    <Remove/>
+                    <Image />  
+                  </>) : <DragAndDropImage />} 
+            </Content>
        </Wrapper>
     )
 }
@@ -47,16 +47,19 @@ const Wrapper = styled.div`
   `
 
 const Content = styled.div`
-    padding: 10px;
     width: 100%;
     height: 100%;
     margin: 0 auto;
-    background: url(${bg});
+    background: #0d1216;
     display: flex;
     justify-content: center;
+    align-items: center;
     flex-direction: column;
-    padding: 30px;
+    overflow: auto;
+
 `
+
+// url(${bg});  
 
 
 {/* <script>

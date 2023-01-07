@@ -1,13 +1,12 @@
-import { useEffect, useState, useContext } from 'react';
-import styled, { css } from 'styled-components';
+import { useContext } from 'react';
 
-import { Icon, Wrapper } from '../Layout';
+import { SidebarWrapper, Icon, Option } from './styled';
 import { StoreContext } from '../state/store';
 
 const Sidebar = ({ clicHandler }) => {
   const { state, dispatch } = useContext(StoreContext);
   return (
-    <Wrapper>
+    <SidebarWrapper>
       <ul className="categories">
         {state?.effects &&
           state?.effects.map((effect, index) => (
@@ -17,14 +16,14 @@ const Sidebar = ({ clicHandler }) => {
                 dispatch({ type: 'SIDEBAR_INDEX', payload: index })
               }
             >
-              <div id="item">
+              <Option id="item">
                 <Icon icon={`${effect.name.toLowerCase()}`}></Icon>
                 <span>{effect.name}</span>
-              </div>
+              </Option>
             </li>
           ))}
       </ul>
-    </Wrapper>
+    </SidebarWrapper>
   );
 };
 
