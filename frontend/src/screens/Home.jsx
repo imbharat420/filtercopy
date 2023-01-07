@@ -16,8 +16,7 @@ import {StoreContext} from "../state/store"
 
 
 const Home = ()=>{
-    const { state, dispatch } = useContext(StoreContext)
-    console.log(state)
+    const { state } = useContext(StoreContext)
     return(
        <Wrapper>
             <Sidebar/>

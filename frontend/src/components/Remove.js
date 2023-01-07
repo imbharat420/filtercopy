@@ -1,10 +1,11 @@
-import { useContext } from 'react';
+import { useContext, useState } from 'react';
 import { StoreContext } from '../state/store';
 import { UploadContainer, IconContainer } from './styled';
 // import Delete from '../assets/Delete.svg';
 
 const Remove = () => {
   const { state, dispatch } = useContext(StoreContext);
+  const [value, setValue] = useState('Expires at ' + state.image?.expires_at);
 
   const handleImageChange = (e) => {
     dispatch({ type: 'REMOVE_IMAGE' });
@@ -15,9 +16,10 @@ const Remove = () => {
       <div className="">
         <input
           type="text"
-          placeholder="Image URL"
+          placeholder="Set Name"
           class="input-name"
-          value={'Expires at ' + state.image?.expires_at}
+          value={value}
+          onChange={(e) => setValue(e.target.value)}
         />
       </div>
       <div className="buttons">

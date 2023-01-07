@@ -8,7 +8,6 @@ const filterAxios = async (formData) => {
   let axios = AxiosHandler();
   try {
     const { data } = await axios.post('/edit/render', formData);
-    console.log(data);
     return data;
   } catch (err) {
     console.log('Error : ', err);
@@ -20,7 +19,9 @@ const Zone = () => {
 
   const filterImage = async (id) => {
     dispatch({ type: 'LOADING' });
-    if (id === undefined && state.image.id === undefined) return;
+    if (id === undefined || state.image.id === undefined) {
+      return;
+    }
     const filterData = {
       effectId: id,
       photoId: state.image.id,
