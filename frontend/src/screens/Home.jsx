@@ -4,7 +4,10 @@ import Image from "../components/Image";
 import Sidebar from "../components/Sidebar";
 import Zone from "../components/Zone";
 import Subsidebar from "../components/Subsidebar";
+import Error from "../components/Error";
+
 import styled from "styled-components"
+
 
 // import bg from "../assets/bg.jpg"
 
@@ -17,8 +20,10 @@ import {StoreContext} from "../state/store"
 
 const Home = ()=>{
     const { state } = useContext(StoreContext)
+    console.log(state);
     return(
        <Wrapper>
+            {state.error && <Error/>}
             <Sidebar/>
             <Subsidebar/>
             <Zone/>

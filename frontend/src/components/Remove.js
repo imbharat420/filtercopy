@@ -1,6 +1,6 @@
 import { useContext, useState } from 'react';
 import { StoreContext } from '../state/store';
-import { UploadContainer, IconContainer } from './styled';
+import { TopbarContainer, IconContainer } from './styled';
 // import Delete from '../assets/Delete.svg';
 
 const Remove = () => {
@@ -12,12 +12,12 @@ const Remove = () => {
   };
 
   return (
-    <UploadContainer>
+    <TopbarContainer>
       <div className="">
         <input
           type="text"
           placeholder="Set Name"
-          class="input-name"
+          className="input-name"
           value={value}
           onChange={(e) => setValue(e.target.value)}
         />
@@ -27,7 +27,7 @@ const Remove = () => {
           <Delete />
         </IconContainer>
       </div>
-    </UploadContainer>
+    </TopbarContainer>
   );
 };
 

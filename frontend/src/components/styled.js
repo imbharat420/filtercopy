@@ -17,7 +17,7 @@ const scrollBar = css`
     width: 0.5rem;
   }
   ::-webkit-scrollbar-track {
-    background: 'transparent';
+    background: transparent;
   }
   ::-webkit-scrollbar-thumb {
     background: ${DarkWhite};
@@ -28,10 +28,29 @@ const scrollBar = css`
   }
 `;
 
+const overflowed = css`
+  ::-webkit-scrollbar {
+    width: 0.5rem;
+  }
+  ::-webkit-scrollbar-track {
+    background: ${Primary};
+  }
+  ::-webkit-scrollbar-thumb {
+    background: ${Secondary};
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: ${Shadow};
+  }
+`;
+
 const center = css`
   display: flex;
   justify-content: center;
   align-items: center;
+`;
+
+export const CenterWrapper = styled.span`
+  ${center}
 `;
 
 const SpaceBetween = css`
@@ -46,14 +65,14 @@ const RightFlex = css`
 `;
 
 const button = css`
-  font-size: 20px;
-  color: #333;
-  border-radius: 4px;
-  border: 1px solid #666;
-  box-shadow: 0 1px 2px 0 rgb(0 0 0 / 30%);
-  text-shadow: 0 1px 0 #fff;
-  background: -webkit-linear-gradient(top, #ececed 0, #ccc 100%);
-  background: linear-gradient(to bottom, #ececed 0, #ccc 100%);
+  width: 100%;
+  margin-top: 1rem;
+  border: none;
+  color: #fff;
+  padding: 0.8rem;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1rem;
 `;
 
 const Input = css`
@@ -72,6 +91,11 @@ const Input = css`
   }
 `;
 
+export const FullContainer = styled.div`
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+`;
 export const List = css`
   ul {
     list-style: none;
@@ -145,9 +169,12 @@ export const Icon = styled.div`
     ${({ icon }) =>
       icon === `artistic` &&
       css`
-        background-position: -58px -149px;
+        background-position: -90px -149px;
         width: 20px;
         height: 22px;
+        &:hover {
+          background-position: -58px -149px;
+        }
       `}} 
      ${({ icon }) =>
        icon === `fun` &&
@@ -155,6 +182,9 @@ export const Icon = styled.div`
          background-position: -57px -118px;
          width: 28px;
          height: 17px;
+         &:hover {
+           background-position: -89px -118px;
+         }
        `}}
     ${({ icon }) =>
       icon === `e-cards` &&
@@ -162,6 +192,9 @@ export const Icon = styled.div`
         background-position: -121px -118px;
         width: 28px;
         height: 17px;
+        &:hover {
+          background-position: -150px -118px;
+        }
       `}}
     ${({ icon }) =>
       icon === `christmas` &&
@@ -170,6 +203,9 @@ export const Icon = styled.div`
         background-position: 0 0;
         width: 24px;
         height: 26px;
+        &:hover {
+          background-position: -26px 0;
+        }
       `}}    
     ${({ icon }) =>
       icon === `thanksgiving` &&
@@ -177,6 +213,9 @@ export const Icon = styled.div`
         background-position: -57px -118px;
         width: 28px;
         height: 17px;
+        &:hover {
+          background-position: -26px 0;
+        }
       `}}
      ${({ icon }) =>
        icon === `overlays` &&
@@ -184,17 +223,25 @@ export const Icon = styled.div`
          background-image: url(${overlays});
          width: 22px;
          height: 20px;
+         &:hover {
+           background-position: -22px 0;
+         }
        `}}
 `;
 
 export const ImageContainer = styled.div`
+  ${overflowed}
   width: 100%;
   height: 100%;
   bacground: #fff;
   display: flex;
   justify-content: center;
   align-items: center;
+  overflow: auto;
 
+  @media (max-width: 768px) {
+    width: 100%;
+  }
   img {
   }
 `;
@@ -204,9 +251,9 @@ export const MainWrapper = styled.div`
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  min-width: 500px;
-  min-width: 500px;
-  max-height: 500px;
+  min-width: 300px;
+  min-width: 300px;
+  width: 50%;
   max-width: 500px;
   background-color: #fff;
   padding: 3rem;
@@ -216,14 +263,13 @@ export const MainWrapper = styled.div`
     width: -webkit-fill-available;
   }
   .btn {
-    width: 100%;
-    margin-top: 1rem;
+    ${button};
     background-color: ${Primary};
-    border: none;
-    color: #fff;
-    padding: 0.5rem;
-    border-radius: 5px;
-    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+    &:hover {
+      background-color: #000;
+      box-shadow: 0px 1px 10px 3px rgba(0, 0, 0, 0.3);
+    }
   }
   .dropzone {
     width: 100%;
@@ -234,7 +280,9 @@ export const MainWrapper = styled.div`
   }
 `;
 
-export const UploadContainer = styled.div`
+export const TopbarContainer = styled.div`
+  position: sticky;
+  top: 0;
   ${SpaceBetween};
   width: 100%;
   background-color: ${Secondary};
@@ -284,6 +332,48 @@ export const Spinner = styled.div`
     props.borderColor ? props.borderColor : '#5a5a5a'};
   animation: ${rotate} 1s linear infinite;
   margin: 0 auto;
+`;
+
+export const Code = styled.span`
+  border-radius: 5px;
+  border: 1px solid #000;
+  padding: 0.2rem;
+  font-size: 0.8rem;
+  font-weight: 600;
+  margin-left: ${(props) => (props.marginLeft ? props.marginLeft : '0.2rem')};})
+`;
+
+export const Para = styled.p`
+  text-align: center;
+  font-size: 0.8rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+`;
+
+export const ErrorWrapper = styled.div`
+  position: absolute;
+  display: inline-block;
+  right: 10px;
+  bottom: 10px;
+  width: fit-content;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  background: #fff;
+  border-left: 10px solid #fa5d5c;
+  color: ${Primary};
+  padding: 0.6rem 0.8rem;
+  font-size: 0.6rem;
+  .btn {
+    ${button};
+    background-color: ${Primary};
+    transition: all 0.3s ease-in-out;
+    &:hover {
+      background-color: #000;
+      box-shadow: 0px 1px 10px 3px rgba(0, 0, 0, 0.3);
+    }
+  }
 `;
 
 /*

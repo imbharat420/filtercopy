@@ -14,6 +14,7 @@ const states = {
   currentEffectName: '',
   currentEffectType: '',
   imgLink: '',
+  error: '',
 };
 
 // Create a context for the state and a reducer for updating the state
@@ -49,6 +50,9 @@ const reducer = (state = states, action) => {
       return { ...state, loading: true };
     case 'REMOVE_IMAGE':
       return { ...state, image: {}, filteredImage: {}, history: [] };
+    case 'ERROR':
+      console.log('error', payload);
+      return { ...state, error: payload, loading: false };
     default:
       return state;
   }
