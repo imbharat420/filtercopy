@@ -1,9 +1,9 @@
 import { useContext, useState } from 'react';
 import { StoreContext } from '../state/store';
-import { TopbarContainer, IconContainer } from './styled';
+import { TopbarContainer, IconContainer, CenterWrapper } from './styled';
 // import Delete from '../assets/Delete.svg';
 
-const Remove = () => {
+const Topbar = () => {
   const { state, dispatch } = useContext(StoreContext);
   const [value, setValue] = useState('Expires at ' + state.image?.expires_at);
 
@@ -14,13 +14,17 @@ const Remove = () => {
   return (
     <TopbarContainer>
       <div className="">
-        <input
-          type="text"
-          placeholder="Set Name"
-          className="input-name"
-          value={value}
-          onChange={(e) => setValue(e.target.value)}
-        />
+        <CenterWrapper>
+          <TimeIcon />
+          <input
+            style={{ marginLeft: '5px' }}
+            type="text"
+            placeholder="Set Name"
+            className="input-name"
+            value={value}
+            onChange={(e) => setValue(e.target.value)}
+          />
+        </CenterWrapper>
       </div>
       <div className="buttons">
         <IconContainer onClick={handleImageChange}>
@@ -47,7 +51,42 @@ const Delete = () => {
   );
 };
 
-export default Remove;
+const TimeIcon = () => {
+  return (
+    <svg
+      aria-label="Your Activity"
+      color="#fafafa"
+      fill="#fafafa"
+      height="24"
+      role="img"
+      viewBox="0 0 24 24"
+      width="24"
+    >
+      <path
+        d="M12 1.505a10.5 10.5 0 11-7.424 17.924"
+        fill="none"
+        stroke="currentColor"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        stroke-width="2"
+      ></path>
+      <polyline
+        fill="none"
+        points="8.893 15.108 12 12 12.012 12.012 12.012 5.793"
+        stroke="currentColor"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        stroke-width="2"
+      ></polyline>
+      <circle cx="7.24" cy="2.651" r="1.125"></circle>
+      <circle cx="3.515" cy="5.83" r="1.125"></circle>
+      <circle cx="1.636" cy="10.353" r="1.125"></circle>
+      <circle cx="2.01" cy="15.235" r="1.125"></circle>
+    </svg>
+  );
+};
+
+export default Topbar;
 
 /*
  // const reader = new FileReader();

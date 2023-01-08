@@ -231,6 +231,7 @@ export const Icon = styled.div`
 
 export const ImageContainer = styled.div`
   ${overflowed}
+  white-space: nowrap;
   width: 100%;
   height: 100%;
   bacground: #fff;
@@ -238,7 +239,7 @@ export const ImageContainer = styled.div`
   justify-content: center;
   align-items: center;
   overflow: auto;
-
+  touch-action: pan-x pan-y;
   @media (max-width: 768px) {
     width: 100%;
   }
@@ -258,6 +259,7 @@ export const MainWrapper = styled.div`
   background-color: #fff;
   padding: 3rem;
   border-radius: 10px;
+  overflow: hidden;
   .img {
     height: -webkit-fill-available;
     width: -webkit-fill-available;
@@ -376,6 +378,20 @@ export const ErrorWrapper = styled.div`
   }
 `;
 
+export const RangeContainer = styled.div`
+  grid-area: slider;
+  height: 16px;
+`;
+
+export const RangeWrapper = styled.div`
+  grid-area: slider;
+  height: 16px;
+`;
+
+export const RangeTackle = styled.div``;
+export const RangeProgress = styled.div``;
+export const RangeSlider = styled.div``;
+export const RangeThumb = styled.div``;
 /*
 
   top: 10px;

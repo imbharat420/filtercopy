@@ -103,7 +103,10 @@ function DragAndDropImage() {
             </CenterWrapper>
           )
         ) : (
-          'Select a file'
+          <CenterWrapper>
+            {/* <Select /> */}
+            Select a file
+          </CenterWrapper>
         )}
       </button>
     </MainWrapper>
@@ -124,6 +127,51 @@ const Upload = () => {
         fill="currentColor"
         d="M12.75 13.81v7.44a.75.75 0 1 1-1.5 0v-7.4L9.49 15.6a.75.75 0 1 1-1.06-1.06l2.35-2.36c.68-.68 1.8-.68 2.48 0l2.35 2.36a.75.75 0 1 1-1.06 1.06l-1.8-1.8zM9 18v1.5H6.75v-.01A5.63 5.63 0 0 1 5.01 8.66a6 6 0 0 1 11.94-.4 5.63 5.63 0 0 1 .3 11.23v.01H15V18h1.88a4.12 4.12 0 1 0-1.5-7.97A4.51 4.51 0 0 0 11 4.5a4.5 4.5 0 0 0-4.43 5.29 4.13 4.13 0 0 0 .68 8.2V18H9z"
       ></path>
+    </svg>
+  );
+};
+
+const Select = () => {
+  return (
+    <svg
+      aria-label="New post"
+      color="#fafafa"
+      fill="#fafafa"
+      role="img"
+      viewBox="0 0 24 24"
+      height="18"
+      width="18"
+    >
+      <path
+        d="M2 12v3.45c0 2.849.698 4.005 1.606 4.944.94.909 2.098 1.608 4.946 1.608h6.896c2.848 0 4.006-.7 4.946-1.608C21.302 19.455 22 18.3 22 15.45V8.552c0-2.849-.698-4.006-1.606-4.945C19.454 2.7 18.296 2 15.448 2H8.552c-2.848 0-4.006.699-4.946 1.607C2.698 4.547 2 5.703 2 8.552Z"
+        fill="none"
+        stroke="currentColor"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        stroke-width="2"
+      ></path>
+      <line
+        fill="none"
+        stroke="currentColor"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        stroke-width="2"
+        x1="6.545"
+        x2="17.455"
+        y1="12.001"
+        y2="12.001"
+      ></line>
+      <line
+        fill="none"
+        stroke="currentColor"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        stroke-width="2"
+        x1="12.003"
+        x2="12.003"
+        y1="6.545"
+        y2="17.455"
+      ></line>
     </svg>
   );
 };

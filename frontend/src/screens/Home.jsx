@@ -1,5 +1,7 @@
 import {useContext} from "react";
-import Remove from "../components/Remove";
+import Topbar from "../components/Topbar";
+import BottomBar from "../components/BottomBar";
+
 import Image from "../components/Image";
 import Sidebar from "../components/Sidebar";
 import Zone from "../components/Zone";
@@ -30,8 +32,9 @@ const Home = ()=>{
             <Content>
                 {state.image?.url !== undefined ? (
                   <> 
-                    <Remove/>
+                    <Topbar/>
                     <Image />  
+                    {/* <BottomBar/> */}
                   </>) : <DragAndDropImage />} 
             </Content>
        </Wrapper>
