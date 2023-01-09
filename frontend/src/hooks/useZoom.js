@@ -1,7 +1,6 @@
 import { useRef, useEffect, useState } from 'react';
 
-function useZoom(initialFactor) {
-  const elementRef = useRef(null);
+function useZoom(initialFactor, elementRef) {
   const [factor, setFactor] = useState(initialFactor);
   useEffect(() => {
     const element = elementRef.current;
@@ -25,6 +24,6 @@ function useZoom(initialFactor) {
       element.removeEventListener('pinch', handlePinch);
     };
   }, [factor]);
-  return elementRef;
+  return factor;
 }
 export default useZoom;

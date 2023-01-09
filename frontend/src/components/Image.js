@@ -1,28 +1,43 @@
-import { useContext } from 'react';
+import React, { useEffect } from 'react';
+import { useContext, useRef } from 'react';
 import { StoreContext } from '../state/store';
 import { ImageContainer, FullContainer } from './styled';
 import useZoom from '../hooks/useZoom';
 import usePreventDefault from '../hooks/usePreventDefault';
-const Image = () => {
+
+const ImageComponent = () => {
+  const canvasRef = useRef(null);
+  useEffect(() => {
+    const canvas = canvasRef.current;
+    const ctx = canvas.getContext('2d');
+
+    const image = new Image();
+
+    image.onload = () => {
+      ctx.drawImage(image, 0, 0);
+    };
+
+    image.src = state?.filteredImage?.url;
+  }, []);
+
   const { state } = useContext(StoreContext);
-  const elementRef = useZoom(1);
+
+  let factor = useZoom(1, canvasRef);
   const preventRef = usePreventDefault(['wheel', 'pinch']);
+
   return (
     <FullContainer>
       <ImageContainer ref={preventRef}>
         {state?.filteredImage?.url && (
-          <img
-            ref={elementRef}
-            src={state.filteredImage?.url}
-            alt="uploaded Content"
-            style={{ margin: '0 auto' }}
+          <canvas
+            ref={canvasRef}
             width={`${state.filteredImage?.width}px`}
             height={`${state.filteredImage?.height}px`}
-          />
+          ></canvas>
         )}
       </ImageContainer>
     </FullContainer>
   );
 };
 
-export default Image;
+export default ImageComponent;
