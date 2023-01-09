@@ -1,7 +1,8 @@
 import { useContext } from 'react';
 import { StoreContext } from '../state/store';
 import AxiosHandler from '../api/AxiosHandler';
-import { ZoneWrapper } from './styled';
+import { ZoneWrapper, DrawerOuter } from './styled';
+import { Chevron, Drawer } from './Icons';
 
 const filterAxios = async (formData) => {
   console.log('formData', formData);
@@ -52,6 +53,10 @@ const Zone = () => {
           </li>
         ))}
       </ul>
+      <DrawerOuter>
+        <Chevron />
+        <Drawer />
+      </DrawerOuter>
     </ZoneWrapper>
   );
 };

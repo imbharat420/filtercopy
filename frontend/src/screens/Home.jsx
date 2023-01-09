@@ -1,4 +1,6 @@
 import {useContext} from "react";
+
+
 import Topbar from "../components/Topbar";
 import BottomBar from "../components/BottomBar";
 
@@ -16,13 +18,14 @@ import styled from "styled-components"
 import DragAndDropImage from "../components/DragAndDropImage";
 
 
-
+import useTitle from "../hooks/useTitle"
 import {StoreContext} from "../state/store"
 
 
 const Home = ()=>{
     const { state } = useContext(StoreContext)
     console.log(state);
+    useTitle("FilterCopy","😭 Come Back")
     return(
        <Wrapper>
             {state.error && <Error/>}

@@ -16,6 +16,7 @@ const scrollBar = css`
   ::-webkit-scrollbar {
     width: 0.5rem;
   }
+
   ::-webkit-scrollbar-track {
     background: transparent;
   }
@@ -101,12 +102,17 @@ export const List = css`
     list-style: none;
     padding: 0;
     margin: 0;
+    height: 100vh;
+    ${scrollBar}
+    overflow-y: auto;
     li {
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
       margin: 1.7rem;
+      cursor: pointer;
+      user-select: none;
       img {
         height: 80px;
         width: 128px;
@@ -121,18 +127,6 @@ export const List = css`
       }
     }
 `;
-export const SubSidebarWrapper = styled.div`
-${scrollBar}
-  min-width: 150px;
-  height: 100vh;
-  overflow-y: auto;
-  overflow-x: hidden;
-  background-color: ${Secondary};
-  border-left: 0.2px solid ${Shadow};
-  border-right: 0.2px solid ${Shadow};
-  ${List}
-  }
-`;
 
 export const SidebarWrapper = styled.div`
   height: 100vh;
@@ -142,24 +136,56 @@ export const SidebarWrapper = styled.div`
   padding: 10px;
 `;
 
-export const ZoneWrapper = styled.div`
-  ${scrollBar}
+export const SubSidebarWrapper = styled.div`
+  position: relative;
   min-width: 150px;
   height: 100vh;
-  overflow-y: auto;
-  overflow-x: hidden;
+  overflow: hidden;
   background-color: ${Secondary};
-   border-right: 0.2px solid ${Shadow};
+  border-left: 0.2px solid ${Shadow};
+  border-right: 0.2px solid ${Shadow};
+  padding-right: 5px;
   ${List}
+  }
+`;
+
+export const ZoneWrapper = styled.div`
+  position: relative;
+  padding-right: 5px;
+  min-width: 150px;
+  height: 100vh;
+  background-color: ${Secondary};
+  border-right: 0.2px solid ${Shadow};
+  ${List}
+  }
+`;
+
+export const DrawerOuter = styled.div`
+  position: absolute;
+  top: 50%;
+  right: 4px;
+  transform: translate(100%, -50%);
+  z-index: 999;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: not-allowed;
+  pointer-events: all !important;
+  .drawer {
+    position: absolute;
+  }
+  .chevron {
+    position: absolute;
   }
 `;
 
 export const Option = styled.div`
   ${center}
   flex-direction: column;
-  margin: 10px;
   width: 60px;
   height: 72px;
+  cursor: pointer;
+  margin-bottom: 20px;
 `;
 
 export const Icon = styled.div`
