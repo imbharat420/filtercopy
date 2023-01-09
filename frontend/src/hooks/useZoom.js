@@ -17,7 +17,7 @@ function useZoom(initialFactor, elementRef) {
       event.preventDefault();
       setFactor(factor + event.scale * -0.001);
     }
-    element.addEventListener('wheel', handleWheel);
+    element.addEventListener('wheel', handleWheel); //{ passive: true }
     element.addEventListener('pinch', handlePinch);
     return () => {
       element.removeEventListener('wheel', handleWheel);

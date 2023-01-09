@@ -62,7 +62,7 @@ const Content = styled.div`
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    overflow: auto;
+    overflow: hidden;
 
 `
 

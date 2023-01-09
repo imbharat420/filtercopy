@@ -230,6 +230,7 @@ export const Icon = styled.div`
 `;
 
 export const ImageContainer = styled.div`
+  position: relative;
   ${overflowed}
   white-space: nowrap;
   width: 100%;
@@ -296,6 +297,9 @@ export const TopbarContainer = styled.div`
   }
   .input-name {
     ${Input}
+    @media (max-width: 768px) {
+      display: none;
+    }
   }
 `;
 
@@ -306,6 +310,7 @@ export const IconContainer = styled.span`
   cursor: pointer;
   padding: 4px;
   border-radius: 5px;
+  margin-right: ${(props) => (props.marginRight ? props.marginRight : '0px')};
   &:hover {
     background: rgba(225, 225, 225, 0.1);
   }
@@ -334,6 +339,17 @@ export const Spinner = styled.div`
     props.borderColor ? props.borderColor : '#5a5a5a'};
   animation: ${rotate} 1s linear infinite;
   margin: 0 auto;
+`;
+
+export const Loading = styled.div`
+  position: absolute;
+  background: rgba(0, 0, 0, 0.5);
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 100;
 `;
 
 export const Code = styled.span`
@@ -392,6 +408,7 @@ export const RangeTackle = styled.div``;
 export const RangeProgress = styled.div``;
 export const RangeSlider = styled.div``;
 export const RangeThumb = styled.div``;
+
 /*
 
   top: 10px;
