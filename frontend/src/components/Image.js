@@ -1,15 +1,18 @@
 import React, { useEffect, useState } from 'react';
 import { useContext, useRef } from 'react';
 import { StoreContext } from '../state/store';
+import { CanvasContext } from '../state/canvas';
+
 import { ImageContainer, FullContainer, Loading, Spinner } from './styled';
 import useZoom from '../hooks/useZoom';
 import usePreventDefault from '../hooks/usePreventDefault';
+
 // import download from '../hooks/useDownload';
 
 const ImageComponent = () => {
   const { state } = useContext(StoreContext);
-
-  const canvasRef = useRef(null);
+  const canvasRef = useContext(CanvasContext);
+  // const canvasRef = useRef(null);
   const [url, setUrl] = useState(null);
 
   useEffect(() => {

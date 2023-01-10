@@ -5,4 +5,14 @@ function download() {
   link.click();
 }
 
-export default download;
+function copy() {
+  let image = document.querySelector('canvas').toDataURL();
+  try {
+    navigator.clipboard.writeText(image);
+    alert('Image has been copied to clipboard!');
+  } catch (err) {
+    console.error('Failed to copy image: ', err);
+  }
+}
+
+export { download, copy };

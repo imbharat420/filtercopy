@@ -1,11 +1,21 @@
-import { useContext, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { StoreContext } from '../state/store';
+import { CanvasContext } from '../state/canvas';
 import { TopbarContainer, IconContainer, CenterWrapper } from './styled';
 import { Delete, TimeIcon, DownloadImage } from './Icons';
-import download from '../hooks/useDownload';
-
+// import { download, copy } from '../hooks/useDownload';
+import useCanvasClipboard from '../hooks/useCanvasClipboard';
+import { CopyIcon } from './Icons';
+import Tooltip from './Tooltip';
 const Topbar = () => {
   const { state, dispatch } = useContext(StoreContext);
+  const canvasRef = useContext(CanvasContext);
+
+  const [download, copy, isCopied] = useCanvasClipboard(canvasRef);
+
+  useEffect(() => {
+    console.log('isCopied', isCopied);
+  }, [isCopied]);
   const [value, setValue] = useState('Expires at ' + state.image?.expires_at);
 
   const handleImageChange = (e) => {
@@ -28,12 +38,21 @@ const Topbar = () => {
         </CenterWrapper>
       </div>
       <div className="buttons">
-        <IconContainer marginRight="2px" onClick={download}>
-          <DownloadImage />
-        </IconContainer>
-        <IconContainer onClick={handleImageChange}>
-          <Delete />
-        </IconContainer>
+        <Tooltip text={!isCopied ? 'Copy' : 'Copied'}>
+          <IconContainer marginRight="2px" onClick={copy} title="Copy">
+            <CopyIcon />
+          </IconContainer>
+        </Tooltip>
+        <Tooltip text="Download">
+          <IconContainer marginRight="2px" onClick={download} title="Download">
+            <DownloadImage />
+          </IconContainer>
+        </Tooltip>
+        <Tooltip text="Delete">
+          <IconContainer onClick={handleImageChange} title="Delete">
+            <Delete />
+          </IconContainer>
+        </Tooltip>
       </div>
     </TopbarContainer>
   );

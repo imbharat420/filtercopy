@@ -20,6 +20,7 @@ import DragAndDropImage from "../components/DragAndDropImage";
 
 import useTitle from "../hooks/useTitle"
 import {StoreContext} from "../state/store"
+import {CanvasProvider} from "../state/canvas"
 
 
 const Home = ()=>{
@@ -34,11 +35,11 @@ const Home = ()=>{
             <Zone/>
             <Content>
                 {state.image?.url !== undefined ? (
-                  <> 
+                  <CanvasProvider> 
                     <Topbar/>
                     <Image />  
                     {/* <BottomBar/> */}
-                  </>) : <DragAndDropImage />} 
+                  </CanvasProvider>) : <DragAndDropImage />} 
             </Content>
        </Wrapper>
     )
