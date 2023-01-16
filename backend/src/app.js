@@ -3,6 +3,7 @@ import { config } from 'dotenv';
 import { rateLimit } from 'express-rate-limit';
 import morgan from 'morgan';
 import cors from 'cors';
+import { handleError } from 'req-error';
 
 const app = express();
 
@@ -11,6 +12,7 @@ const PORT = process.env.PORT || 8000;
 
 //middlewares
 import httpResponder from './middleware/httpResponder.js';
+import { getBody } from './middleware/reqUtils.js';
 
 //routes
 import editRoute from './routes/edit.js';
@@ -30,28 +32,32 @@ app.use(
   })
 );
 
+// ----  set and Add Middleware -- //
+
 app.use(httpResponder);
+app.request.getBody = getBody;
+
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
-app.use(
-  '/api/',
-  rateLimit({
-    windowMs: 25 * 60 * 1000,
-    max: 500,
-    message: { error: 'Too many requests!, please try again after 25mins' },
-  })
-);
+const globalLimiter = rateLimit({
+  windowMs: 60 * 60 * 1000,
+  max: 1000,
+  message: { error: 'Too many requests!, please try again after 25mins' },
+});
+app.use('/api/', globalLimiter);
 
 app.use(morgan('dev'));
 
+// ---- ROUTES ----- //
 app.use('api/auth', authRoute);
-
 app.use('/api/edit', editRoute);
 
 app.use('*', (req, res) => {
   res.send('Page Not Found');
 });
+
+handleError(app);
 
 export default app;
 
