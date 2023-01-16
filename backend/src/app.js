@@ -16,8 +16,6 @@ import httpResponder from './middleware/httpResponder.js';
 import editRoute from './routes/edit.js';
 import authRoute from './routes/auth.js';
 
-/* DB */
-
 app.set('env', process.env.NODE_ENV);
 app.set('json spaces', 2);
 // app.set('trust proxy', 1);

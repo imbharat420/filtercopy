@@ -1,6 +1,5 @@
 import dotenv from 'dotenv';
-import connectDB from './src/config/connectDB';
-
+import connectDB from './src/config/mongoConnect.js';
 dotenv.config();
 if (process.argv.at(-1) === '--NODE_ENV=development') {
   console.clear();
@@ -12,7 +11,8 @@ process.env.PORT ||= 8000;
 import io from './src/socket.js';
 import server from './src/server.js';
 io.attach(server);
-connectDB();
+
 /**
  * MONGODB Connection
  */
+connectDB();
