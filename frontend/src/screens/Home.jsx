@@ -38,7 +38,7 @@ const Home = ()=>{
                   <CanvasProvider> 
                     <Topbar/>
                     <Image />  
-                    {/* <BottomBar/> */}
+                    <BottomBar/>
                   </CanvasProvider>) : <DragAndDropImage />} 
             </Content>
        </Wrapper>

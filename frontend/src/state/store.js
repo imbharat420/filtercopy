@@ -2,7 +2,7 @@ import { createContext, useReducer } from 'react';
 import data from '../assets/data.json';
 
 // Create a provider to wrap your components and provide the state and dispatch functions
-const states = {
+export const states = {
   effects: data['sidebar'],
   currentEffect: {},
   loading: false,

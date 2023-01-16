@@ -5,7 +5,7 @@ function usePreventDefault(events) {
   useEffect(() => {
     function handleEvent(event) {
       event.preventDefault();
-      console.log(`The default ${event.type} behavior was prevented.`);
+      // console.log(`The default ${event.type} behavior was prevented.`);
     }
     const element = elementRef.current;
     if (element) {

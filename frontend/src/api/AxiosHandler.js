@@ -1,9 +1,10 @@
 import axios from 'axios';
 
+export const BASE_URL = 'http://localhost:8000/api';
 const AxiosHandler = () => {
   // Create a custom Axios instance with a base URL and common headers
   const instance = axios.create({
-    baseURL: 'http://localhost:8000/api',
+    baseURL: BASE_URL,
     headers: {
       'Content-Type': 'application/json',
       //   Authorization: `Bearer ${localStorage.getItem('token')}`,

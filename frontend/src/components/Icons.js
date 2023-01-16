@@ -45,16 +45,16 @@ export const Select = () => {
         d="M2 12v3.45c0 2.849.698 4.005 1.606 4.944.94.909 2.098 1.608 4.946 1.608h6.896c2.848 0 4.006-.7 4.946-1.608C21.302 19.455 22 18.3 22 15.45V8.552c0-2.849-.698-4.006-1.606-4.945C19.454 2.7 18.296 2 15.448 2H8.552c-2.848 0-4.006.699-4.946 1.607C2.698 4.547 2 5.703 2 8.552Z"
         fill="none"
         stroke="currentColor"
-        stroke-linecap="round"
-        stroke-linejoin="round"
-        stroke-width="2"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        strokeWidth="2"
       ></path>
       <line
         fill="none"
         stroke="currentColor"
-        stroke-linecap="round"
-        stroke-linejoin="round"
-        stroke-width="2"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        strokeWidth="2"
         x1="6.545"
         x2="17.455"
         y1="12.001"
@@ -63,9 +63,9 @@ export const Select = () => {
       <line
         fill="none"
         stroke="currentColor"
-        stroke-linecap="round"
-        stroke-linejoin="round"
-        stroke-width="2"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        strokeWidth="2"
         x1="12.003"
         x2="12.003"
         y1="6.545"
@@ -122,17 +122,17 @@ export const TimeIcon = () => {
         d="M12 1.505a10.5 10.5 0 11-7.424 17.924"
         fill="none"
         stroke="currentColor"
-        stroke-linecap="round"
-        stroke-linejoin="round"
-        stroke-width="2"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        strokeWidth="2"
       ></path>
       <polyline
         fill="none"
         points="8.893 15.108 12 12 12.012 12.012 12.012 5.793"
         stroke="currentColor"
-        stroke-linecap="round"
-        stroke-linejoin="round"
-        stroke-width="2"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        strokeWidth="2"
       ></polyline>
       <circle cx="7.24" cy="2.651" r="1.125"></circle>
       <circle cx="3.515" cy="5.83" r="1.125"></circle>
@@ -145,7 +145,7 @@ export const TimeIcon = () => {
 export const DownloadImage = () => {
   return (
     <svg height="24px" viewBox="0 0 36 36" width="24px">
-      <g fill="none" fill-rule="evenodd" stroke="none" stroke-width="1">
+      <g fill="none" fillRule="evenodd" stroke="none" strokeWidth="1">
         <polygon points="0 36 36 36 36 0 0 0"></polygon>
         <path
           fill="#fff"
@@ -169,8 +169,8 @@ export const Chevron = () => {
         className="chevron"
         fill="none"
         stroke="#fff"
-        stroke-linecap="round"
-        stroke-width="1.25"
+        strokeLinecap="round"
+        strokeWidth="1.25"
         d="M7 3.17 4.88 5.3a1 1 0 0 0 0 1.42L7 8.83"
       ></path>
     </svg>
@@ -210,6 +210,25 @@ export const CopyIcon = () => {
     >
       <path
         d="M8 0H3.40385C2.55385 0 1.84615 0.669231 1.84615 1.51923V1.84615H1.55769C0.707692 1.84615 0 2.51538 0 3.36538V14.4423C0 15.2923 0.707692 16 1.55769 16H9.55769C10.4077 16 11.0769 15.2923 11.0769 14.4423V14.1538H11.4038C12.2538 14.1538 12.9231 13.4462 12.9231 12.5962V4.92308L8 0ZM8 1.71538L11.2077 4.92308H8V1.71538ZM9.84615 14.4423C9.84615 14.6231 9.71538 14.7692 9.55769 14.7692H1.55769C1.38846 14.7692 1.23077 14.6115 1.23077 14.4423V3.36538C1.23077 3.20769 1.37692 3.07692 1.55769 3.07692H1.84615V12.9038C1.84615 13.7538 2.24615 14.1538 3.09615 14.1538H9.84615V14.4423ZM11.6923 12.5962C11.6923 12.7769 11.5615 12.9231 11.4038 12.9231H3.40385C3.23462 12.9231 3.07692 12.7654 3.07692 12.5962V1.51923C3.07692 1.36154 3.22308 1.23077 3.40385 1.23077H6.76923V6.15385H11.6923V12.5962Z"
+        fill="#fff"
+      ></path>
+    </svg>
+  );
+};
+
+export const FullScreenIcon = () => {
+  return (
+    <svg
+      width="24"
+      height="24"
+      viewBox="0 0 24 24"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        fillRule="evenodd"
+        clipRule="evenodd"
+        d="M14.636 10.43 18.5 6.565v2.687a.75.75 0 0 0 1.5 0V5.497c0-.966-.53-1.495-1.497-1.495h-3.749a.75.75 0 0 0 0 1.5h2.687l-3.867 3.867a.75.75 0 0 0 1.06 1.061Zm-5.27 3.139-3.867 3.867v-2.688a.75.75 0 0 0-1.5 0v3.75c0 .967.527 1.5 1.493 1.5h3.753a.75.75 0 0 0 0-1.5H6.558l3.869-3.869a.75.75 0 0 0-1.061-1.06Z"
         fill="#fff"
       ></path>
     </svg>

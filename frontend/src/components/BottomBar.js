@@ -1,4 +1,5 @@
-import { useState } from 'react';
+import { useContext, useState } from 'react';
+import { FullScreenIcon } from './Icons';
 import {
   RangeWrapper,
   RangeContainer,
@@ -6,19 +7,25 @@ import {
   RangeProgress,
   RangeThumb,
   RangeSlider,
+  BottombarContainer,
+  IconContainer,
 } from './styled';
-
+import { CanvasContext } from '../state/canvas';
+import useFullScreen from '../hooks/useFullScreen';
+import Tooltip from './Tooltip';
 const BottomBar = () => {
+  const canvasRef = useContext(CanvasContext);
+  const handleClick = useFullScreen(canvasRef);
+
   return (
-    <div className="bottom-bar">
-      <div className="bottom-bar__left">
-        <div className="bottom-bar__left__icon"></div>
-        <div className="bottom-bar__left__text">
-          <p>Image will be deleted in 1 day</p>
-        </div>
-        <CustomRange />
-      </div>
-    </div>
+    <BottombarContainer>
+      <div></div>
+      <Tooltip text="New" top="-100%" left="-100px">
+        <IconContainer onClick={handleClick}>
+          <FullScreenIcon />
+        </IconContainer>
+      </Tooltip>
+    </BottombarContainer>
   );
 };
 

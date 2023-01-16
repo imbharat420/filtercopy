@@ -261,7 +261,7 @@ export const ImageContainer = styled.div`
   white-space: nowrap;
   width: 100%;
   height: 100%;
-  bacground: #fff;
+  background: transparent;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -318,6 +318,26 @@ export const TopbarContainer = styled.div`
   height: 49px;
   padding: 0 8px;
   border-bottom: 0.2px solid ${Shadow};
+  .buttons {
+    ${RightFlex}
+  }
+  .input-name {
+    ${Input}
+    @media (max-width: 768px) {
+      display: none;
+    }
+  }
+`;
+
+export const BottombarContainer = styled.div`
+  position: sticky;
+  top: 0;
+  ${SpaceBetween};
+  width: 100%;
+  background-color: ${Secondary};
+  height: 49px;
+  padding: 0 8px;
+  border-top: 0.2px solid ${Shadow};
   .buttons {
     ${RightFlex}
   }
