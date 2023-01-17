@@ -15,33 +15,9 @@ export const forgetPasswordMail = () => {};
 export const verifyEmailOtp = () => {};
 export const sendOtpMail = () => {};
 
-export const registerController = asyncHandler(async (req, res) => {
-  const reqBody = req.getBody('name email avatar username password');
-  const user = new User(reqBody);
+export const registerController = asyncHandler(async (req, res) => {});
 
-  await user.validate();
-  await file.updateFile(req, user);
-
-  await user.save();
-  await UserSettings.create({
-    _id: user._id,
-  });
-
-  req.user = user;
-  next();
-});
-
-export const loginController = asyncHandler(async (req, res) => {
-  const { login, password } = req.body;
-  const user = await User.findOne(getFindUserQuery(login));
-
-  if (!user || !(await user.checkPassword(password))) {
-    throw new ReqError(errorMessages.auth.failed);
-  }
-
-  req.user = user;
-  next();
-});
+export const loginController = asyncHandler(async (req, res) => {});
 
 export const resetPassword = () => {};
 

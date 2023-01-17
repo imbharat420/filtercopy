@@ -1,5 +1,5 @@
 import jsonwebtoken from 'jsonwebtoken';
-// import User from '../model/user-model.js';
+import User from '../models/user-model.js';
 import errorMessages from './error-messages.js';
 
 export const generate = (id) =>
@@ -20,22 +20,23 @@ export const verify = (token) => {
 //   return jsonwebtoken.decode(token, {});
 // };
 
-// export const verifyUser = async (rawToken) => {
-//   if (rawToken?.startsWith('Bearer ')) {
-//     rawToken = rawToken.replace(/^Bearer/, '');
-//   } else {
-//     rawToken = 'none';
-//   }
+export const verifyUser = async (rawToken) => {
+  console.log(rawToken);
+  if (rawToken?.startsWith('Bearer ')) {
+    rawToken = rawToken.replace(/^Bearer /, ''); // Bearer with (space)
+  } else {
+    rawToken = 'none';
+  }
 
-//   const token = this.verify(rawToken);
-//   const user = await User.findById(token.id);
+  const token = verify(rawToken);
+  const user = await User.findById(token.id);
 
-//   if (!user) {
-//     throw new ReqError(errorMessages.user.deleted);
-//   }
-//   if (user.passwordChangedAfter(token.iat)) {
-//     throw new ReqError(errorMessages.auth.jwtExpire);
-//   }
+  if (!user) {
+    throw new ReqError(errorMessages.user.deleted);
+  }
+  if (user.passwordChangedAfter(token.iat)) {
+    throw new ReqError(errorMessages.auth.jwtExpire);
+  }
 
-//   return user;
-// };
+  return user;
+};

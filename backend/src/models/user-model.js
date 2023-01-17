@@ -98,13 +98,10 @@ userSchema.pre('save', function (next) {
 // });
 
 userSchema.methods.checkPassword = async function (password) {
-  try {
-    // Check/Compares password
-    return await bcrypt.compare(password, this.password);
-  } catch (err) {
-    console.log(err);
+  if (!password) {
     throw new ReqError(errorMessages.password.fieldMissing);
   }
+  return bcrypt.compare(password, this.password);
 };
 
 // userSchema.methods.getSafeInfo = function () {
