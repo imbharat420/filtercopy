@@ -50,14 +50,14 @@ app.use('/api/', globalLimiter);
 app.use(morgan('dev'));
 
 // ---- ROUTES ----- //
-app.use('api/auth', authRoute);
+app.use('/api/auth', authRoute);
 app.use('/api/edit', editRoute);
 
 app.use('*', (req, res) => {
   res.send('Page Not Found');
 });
 
-handleError(app);
+// handleError(app);
 
 export default app;
 

@@ -1,4 +1,6 @@
 import { Component } from 'react';
+import { GlobalErrorWrapper } from '../styled';
+
 class ErrorBoundary extends Component {
   constructor(props) {
     super(props);
@@ -12,14 +14,14 @@ class ErrorBoundary extends Component {
   render() {
     if (this.state.error) {
       return (
-        <div className="error-container">
+        <GlobalErrorWrapper>
           <h1>Oops, something went wrong!</h1>
           <p>Error: {this.state.error.message}</p>
           <pre>{this.state.error.stack}</pre>
           <button onClick={() => this.setState({ error: null })}>
             Try Again
           </button>
-        </div>
+        </GlobalErrorWrapper>
       );
     }
     return this.props.children;

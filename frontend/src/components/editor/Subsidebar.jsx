@@ -1,6 +1,6 @@
 import { useContext } from 'react';
-import { SubSidebarWrapper } from './styled';
-import { StoreContext } from '../state/store';
+import { SubSidebarWrapper } from '../styled';
+import { StoreContext } from '../../state/store';
 const SubSidebar = () => {
   const { state, dispatch } = useContext(StoreContext);
   return (

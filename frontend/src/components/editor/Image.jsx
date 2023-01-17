@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import { useContext } from 'react';
-import { StoreContext } from '../state/store';
-import { CanvasContext } from '../state/canvas';
-import { ImageContainer, FullContainer, Loading, Spinner } from './styled';
+import { StoreContext } from '../../state/store';
+import { CanvasContext } from '../../state/canvas';
+import { ImageContainer, FullContainer, Loading, Spinner } from '../styled';
 
-import useZoom from '../hooks/useZoom';
-import usePreventDefault from '../hooks/usePreventDefault';
-import useFullScreen from '../hooks/useFullScreen';
+import useZoom from '../../hooks/useZoom';
+import usePreventDefault from '../../hooks/usePreventDefault';
+import useFullScreen from '../../hooks/useFullScreen';
 // import download from '../hooks/useDownload';
 
 const ImageComponent = () => {

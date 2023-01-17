@@ -11,13 +11,13 @@ const Pointer = () => {
   return (
     <span
       style={{
-        position: 'absolute',
+        position: 'fixed',
         left: `${coordinates.x * window.innerWidth}px`,
         top: `${coordinates.y * window.innerHeight}px`,
         zIndex: 1000,
       }}
     >
-      <img src={PointerIcon} />
+      <img src={PointerIcon} alt="mouse pointer" />
     </span>
   );
 };

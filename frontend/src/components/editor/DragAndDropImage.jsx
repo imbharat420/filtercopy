@@ -1,10 +1,10 @@
 import React, { useRef, useState, useContext } from 'react';
-import { MainWrapper, Spinner, CenterWrapper, Code, Para } from './styled';
-import AxiosHandler from '../api/AxiosHandler';
-import { StoreContext } from '../state/store';
+import { MainWrapper, Spinner, CenterWrapper, Code, Para } from '../styled';
+import AxiosHandler from '../../api/AxiosHandler';
+import { StoreContext } from '../../state/store';
 
-import usePasteEvent from '../hooks/usePasteEvent';
-import { Image, Upload } from './Icons';
+import usePasteEvent from '../../hooks/usePasteEvent';
+import { Image, Upload } from '../Icons';
 
 const imgAxios = async (formData, dispatch) => {
   try {

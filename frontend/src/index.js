@@ -1,16 +1,19 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-// import ErrorBoundary from 'error-boundary-react';
-import ErrorBoundary from './components/ErrorBoundary';
 
 import './index.css';
 import App from './App';
-import AppError from './components/Error';
+
+// -- GLOBAL ERROR -- //
+// import ErrorBoundary from 'error-boundary-react';
+//import AppError from './components/error/AppError';
+
+import ErrorBoundary from './components/error/ErrorBoundary';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <ErrorBoundary element={AppError}>
+    <ErrorBoundary>
       <App />
     </ErrorBoundary>
   </React.StrictMode>

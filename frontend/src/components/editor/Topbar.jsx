@@ -1,12 +1,12 @@
 import { useContext, useEffect, useState } from 'react';
-import { StoreContext } from '../state/store';
-import { CanvasContext } from '../state/canvas';
-import { TopbarContainer, IconContainer, CenterWrapper } from './styled';
-import { Delete, TimeIcon, DownloadImage } from './Icons';
+import { StoreContext } from '../../state/store';
+import { CanvasContext } from '../../state/canvas';
+import { TopbarContainer, IconContainer, CenterWrapper } from '../styled';
+import { Delete, TimeIcon, DownloadImage } from '../Icons';
 // import { download, copy } from '../hooks/useDownload';
-import useCanvasClipboard from '../hooks/useCanvasClipboard';
-import { CopyIcon } from './Icons';
-import Tooltip from './Tooltip';
+import useCanvasClipboard from '../../hooks/useCanvasClipboard';
+import { CopyIcon } from '../Icons';
+import Tooltip from '../Tooltip';
 const Topbar = () => {
   const { state, dispatch } = useContext(StoreContext);
   const canvasRef = useContext(CanvasContext);

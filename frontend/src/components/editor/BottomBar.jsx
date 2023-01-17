@@ -1,5 +1,5 @@
 import { useContext, useState } from 'react';
-import { FullScreenIcon } from './Icons';
+import { FullScreenIcon } from '../Icons';
 import {
   RangeWrapper,
   RangeContainer,
@@ -9,10 +9,10 @@ import {
   RangeSlider,
   BottombarContainer,
   IconContainer,
-} from './styled';
-import { CanvasContext } from '../state/canvas';
-import useFullScreen from '../hooks/useFullScreen';
-import Tooltip from './Tooltip';
+} from '../styled';
+import { CanvasContext } from '../../state/canvas';
+import useFullScreen from '../../hooks/useFullScreen';
+import Tooltip from '../Tooltip';
 const BottomBar = () => {
   const canvasRef = useContext(CanvasContext);
   const handleClick = useFullScreen(canvasRef);

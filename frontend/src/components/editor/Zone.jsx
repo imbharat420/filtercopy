@@ -1,12 +1,12 @@
 import { useContext } from 'react';
-import { StoreContext } from '../state/store';
+import { StoreContext } from '../../state/store';
 
-import { ZoneWrapper, DrawerOuter } from './styled';
-import { Chevron, Drawer } from './Icons';
+import { ZoneWrapper, DrawerOuter } from '../styled';
+import { Chevron, Drawer } from '../Icons';
 
-import { filterImage } from '../action/ImageAction';
-import socketDispatch from '../socket/socketDispatch';
-import { socket } from '../socket';
+import { filterImage } from '../../action/ImageAction';
+import socketDispatch from '../../socket/socketDispatch';
+import { socket } from '../../socket';
 
 const Zone = () => {
   const {

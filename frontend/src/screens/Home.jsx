@@ -1,13 +1,13 @@
 import {useContext} from "react";
 
 
-import Topbar from "../components/Topbar";
-import BottomBar from "../components/BottomBar";
+import Topbar from "../components/editor/Topbar";
+import BottomBar from "../components/editor/BottomBar";
 
-import Image from "../components/Image";
-import Sidebar from "../components/Sidebar";
-import Zone from "../components/Zone";
-import Subsidebar from "../components/Subsidebar";
+import Image from "../components/editor/Image";
+import Sidebar from "../components/editor/Sidebar";
+import Zone from "../components/editor/Zone";
+import Subsidebar from "../components/editor/Subsidebar";
 import Error from "../components/Error";
 
 import styled from "styled-components"
@@ -15,7 +15,7 @@ import styled from "styled-components"
 
 // import bg from "../assets/bg.jpg"
 
-import DragAndDropImage from "../components/DragAndDropImage";
+import DragAndDropImage from "../components/editor/DragAndDropImage";
 
 
 import useTitle from "../hooks/useTitle"

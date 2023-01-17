@@ -157,7 +157,6 @@ export const ZoneWrapper = styled.div`
   background-color: ${Secondary};
   border-right: 0.2px solid ${Shadow};
   ${List}
-  }
 `;
 
 export const DrawerOuter = styled.div`
@@ -429,6 +428,34 @@ export const ErrorWrapper = styled.div`
   color: ${Primary};
   padding: 0.6rem 0.8rem;
   font-size: 0.6rem;
+  color: #fa5d5c;
+  .btn {
+    ${button};
+    background-color: ${Primary};
+    transition: all 0.3s ease-in-out;
+    &:hover {
+      background-color: #000;
+      box-shadow: 0px 1px 10px 3px rgba(0, 0, 0, 0.3);
+    }
+  }
+`;
+
+export const GlobalErrorWrapper = styled.div`
+  position: relative;
+  display: inline-block;
+  right: 10px;
+  bottom: 10px;
+  width: fit-content;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  background: #fff;
+  border-left: 10px solid #fa5d5c;
+  color: ${Primary};
+  padding: 0.6rem 0.8rem;
+  font-size: 0.6rem;
+  color: #fa5d5c;
   .btn {
     ${button};
     background-color: ${Primary};

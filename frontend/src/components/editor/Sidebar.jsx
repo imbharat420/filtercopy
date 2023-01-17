@@ -1,7 +1,7 @@
 import { useContext } from 'react';
 
-import { SidebarWrapper, Icon, Option } from './styled';
-import { StoreContext } from '../state/store';
+import { SidebarWrapper, Icon, Option } from '../styled';
+import { StoreContext } from '../../state/store';
 
 const Sidebar = ({ clicHandler }) => {
   const { state, dispatch } = useContext(StoreContext);
