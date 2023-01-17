@@ -10,6 +10,8 @@ import { StoreProvider } from './state/store.js';
 
 import { updateSocket, socket } from './socket';
 import Pointer from './components/Pointer.js';
+import Login from './screens/Login.jsx';
+import Register from './screens/Register.jsx';
 
 const Home = react.lazy(() => import('./screens/Home'));
 const About = react.lazy(() => import('./screens/About'));
@@ -49,8 +51,10 @@ function App() {
         <StoreProvider>
           <Router>
             <Routes>
-              <Route path="/" element={<Home />} />
+              <Route path="/" element={<Home />} exact />
               <Route path="/about" element={<About />} />
+              <Route path="/login" element={<Login />} />
+              <Route path="/register" element={<Register />} />
               <Route path="/contact" element={<Contact />} />
               <Route path="404" element={<NotFound />} />
               <Route path="*" element={<Navigate to="/404" />} />

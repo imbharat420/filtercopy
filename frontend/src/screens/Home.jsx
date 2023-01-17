@@ -10,7 +10,7 @@ import Zone from "../components/editor/Zone";
 import Subsidebar from "../components/editor/Subsidebar";
 import Error from "../components/Error";
 
-import styled from "styled-components"
+
 
 
 // import bg from "../assets/bg.jpg"
@@ -21,6 +21,11 @@ import DragAndDropImage from "../components/editor/DragAndDropImage";
 import useTitle from "../hooks/useTitle"
 import {StoreContext} from "../state/store"
 import {CanvasProvider} from "../state/canvas"
+
+
+// Styled Components
+import {Wrapper,Content} from "./styled"
+
 
 
 const Home = ()=>{
@@ -47,28 +52,6 @@ const Home = ()=>{
 
 export default Home
 
-
-const Wrapper = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: row
-  width: 100%;
-  height: 100vh;
-  `
-
-const Content = styled.div`
-    width: 100%;
-    height: 100%;
-    margin: 0 auto;
-    background: #0d1216;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    overflow: hidden;
-
-`
 
 // url(${bg});  
 

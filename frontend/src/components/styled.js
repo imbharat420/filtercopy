@@ -54,6 +54,11 @@ export const CenterWrapper = styled.span`
   ${center}
 `;
 
+export const GrayText = css`
+  text-align: center;
+  color: red;
+`;
+
 const SpaceBetween = css`
   display: flex;
   justify-content: space-between;
@@ -126,6 +131,7 @@ export const List = css`
         color: #fff;
       }
     }
+  }
 `;
 
 export const SidebarWrapper = styled.div`
@@ -146,7 +152,6 @@ export const SubSidebarWrapper = styled.div`
   border-right: 0.2px solid ${Shadow};
   padding-right: 5px;
   ${List}
-  }
 `;
 
 export const ZoneWrapper = styled.div`
@@ -188,70 +193,70 @@ export const Option = styled.div`
 `;
 
 export const Icon = styled.div`
-    margin-bottom: 10px;
-    background-image: url(${img});
-    background-repeat: no-repeat; 
+  margin-bottom: 10px;
+  background-image: url(${img});
+  background-repeat: no-repeat;
+  ${({ icon }) =>
+    icon === `artistic` &&
+    css`
+      background-position: -90px -149px;
+      width: 20px;
+      height: 22px;
+      &:hover {
+        background-position: -58px -149px;
+      }
+    `}
+  ${({ icon }) =>
+    icon === `fun` &&
+    css`
+      background-position: -57px -118px;
+      width: 28px;
+      height: 17px;
+      &:hover {
+        background-position: -89px -118px;
+      }
+    `}
     ${({ icon }) =>
-      icon === `artistic` &&
-      css`
-        background-position: -90px -149px;
-        width: 20px;
-        height: 22px;
-        &:hover {
-          background-position: -58px -149px;
-        }
-      `}} 
+    icon === `e-cards` &&
+    css`
+      background-position: -121px -118px;
+      width: 28px;
+      height: 17px;
+      &:hover {
+        background-position: -150px -118px;
+      }
+    `}
+    ${({ icon }) =>
+    icon === `christmas` &&
+    css`
+      background-image: url(${xmass});
+      background-position: 0 0;
+      width: 24px;
+      height: 26px;
+      &:hover {
+        background-position: -26px 0;
+      }
+    `} 
+    ${({ icon }) =>
+    icon === `thanksgiving` &&
+    css`
+      background-position: -57px -118px;
+      width: 28px;
+      height: 17px;
+      &:hover {
+        background-position: -26px 0;
+      }
+    `}
      ${({ icon }) =>
-       icon === `fun` &&
-       css`
-         background-position: -57px -118px;
-         width: 28px;
-         height: 17px;
-         &:hover {
-           background-position: -89px -118px;
-         }
-       `}}
-    ${({ icon }) =>
-      icon === `e-cards` &&
-      css`
-        background-position: -121px -118px;
-        width: 28px;
-        height: 17px;
-        &:hover {
-          background-position: -150px -118px;
-        }
-      `}}
-    ${({ icon }) =>
-      icon === `christmas` &&
-      css`
-        background-image: url(${xmass});
-        background-position: 0 0;
-        width: 24px;
-        height: 26px;
-        &:hover {
-          background-position: -26px 0;
-        }
-      `}}    
-    ${({ icon }) =>
-      icon === `thanksgiving` &&
-      css`
-        background-position: -57px -118px;
-        width: 28px;
-        height: 17px;
-        &:hover {
-          background-position: -26px 0;
-        }
-      `}}
-     ${({ icon }) =>
-       icon === `overlays` &&
-       css`
-         background-image: url(${overlays});
-         width: 22px;
-         height: 20px;
-         &:hover {
-           background-position: -22px 0;
-         }
-       `}}
+    icon === `overlays` &&
+    css`
+      background-image: url(${overlays});
+      width: 22px;
+      height: 20px;
+      &:hover {
+        background-position: -22px 0;
+      }
+    `}
 `;
 
 export const ImageContainer = styled.div`
