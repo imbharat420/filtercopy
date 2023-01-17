@@ -7,6 +7,7 @@ import {
   Navigate,
 } from 'react-router-dom';
 import { StoreProvider } from './state/store.js';
+import { UserProvider } from './state/UserStore.js';
 
 import { updateSocket, socket } from './socket';
 import Pointer from './components/Pointer.js';
@@ -48,19 +49,21 @@ function App() {
     <div className="App" ref={ref} onMouseMove={handleMouseMove}>
       <Suspense fallback={<div>Loading...</div>}>
         {/* {socket && <Pointer />} */}
-        <StoreProvider>
-          <Router>
-            <Routes>
-              <Route path="/" element={<Home />} exact />
-              <Route path="/about" element={<About />} />
-              <Route path="/login" element={<Login />} />
-              <Route path="/register" element={<Register />} />
-              <Route path="/contact" element={<Contact />} />
-              <Route path="404" element={<NotFound />} />
-              <Route path="*" element={<Navigate to="/404" />} />
-            </Routes>
-          </Router>
-        </StoreProvider>
+        <UserProvider>
+          <StoreProvider>
+            <Router>
+              <Routes>
+                <Route path="/" element={<Home />} exact />
+                <Route path="/about" element={<About />} />
+                <Route path="/login" element={<Login />} />
+                <Route path="/register" element={<Register />} />
+                <Route path="/contact" element={<Contact />} />
+                <Route path="404" element={<NotFound />} />
+                <Route path="*" element={<Navigate to="/404" />} />
+              </Routes>
+            </Router>
+          </StoreProvider>
+        </UserProvider>
       </Suspense>
     </div>
   );
