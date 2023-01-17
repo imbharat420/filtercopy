@@ -30,6 +30,8 @@ export const RegisterController = asyncHandler(async (req, res) => {
 });
 
 /*
+
+
   await file.updateFile(req, user);
 
   await UserSettings.create({
