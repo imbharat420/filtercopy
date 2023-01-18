@@ -1,13 +1,17 @@
 import axios from 'axios';
+import { getJWT } from '../utils/LocalAuth';
 
 export const BASE_URL = 'http://localhost:8000/api';
+
 const AxiosHandler = () => {
   // Create a custom Axios instance with a base URL and common headers
   const instance = axios.create({
     baseURL: BASE_URL,
     headers: {
       'Content-Type': 'application/json',
-      //   Authorization: `Bearer ${localStorage.getItem('token')}`,
+      ...(localStorage.token && {
+        Authorization: `Bearer ${getJWT()}`,
+      }),
     },
   });
 

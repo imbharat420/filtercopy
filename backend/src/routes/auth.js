@@ -7,7 +7,7 @@ import {
 } from '../controller/authController.js';
 const route = Router();
 
-route.post('/check', CheckAuth);
+route.get('/check', CheckAuth);
 route.post('/login', LoginController);
 route.post('/register', RegisterController);
 

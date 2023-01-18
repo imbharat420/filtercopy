@@ -57,7 +57,7 @@ app.use('*', (req, res) => {
   res.send('Page Not Found');
 });
 
-// handleError(app);
+handleError(app);
 
 export default app;
 

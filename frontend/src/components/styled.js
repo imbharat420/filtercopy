@@ -97,6 +97,12 @@ const Input = css`
   }
 `;
 
+export const ScreenContainer = styled.div`
+  height: 100vh;
+  width: 100%;
+  ${center}
+`;
+
 export const FullContainer = styled.div`
   width: 100%;
   height: 100%;

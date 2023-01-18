@@ -1,8 +1,10 @@
 import { createContext, useReducer } from 'react';
+import { getJWT, saveJWT, clearJWT } from '../utils/LocalAuth';
 
 // Create a provider to wrap your components and provide the state and dispatch functions
 export const states = {
   user: {},
+  token: getJWT() || undefined,
   loading: false,
   error: null,
 };
@@ -14,9 +16,27 @@ const reducer = (state = states, action) => {
   switch (type) {
     case 'LOGIN':
     case 'REGISTER':
-      return { ...state, effects: payload, loading: false };
+      saveJWT(payload.token);
+      return {
+        ...state,
+        ...payload,
+        loading: false,
+      };
+    case 'LOAD_USER':
+      return {
+        ...state,
+        ...payload,
+        loading: false,
+      };
+    case 'LOGOUT':
+      clearJWT();
+      return {
+        ...state,
+        user: null,
+        token: null,
+        loading: false,
+      };
     case 'ERROR':
-      console.log('error', payload);
       return { ...state, error: payload, loading: false };
     default:
       return state;

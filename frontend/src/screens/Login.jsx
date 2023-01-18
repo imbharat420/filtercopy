@@ -1,13 +1,18 @@
-import { useEffect, useState } from "react"
-import { Link } from "react-router-dom"
+import { useState,useContext } from "react"
+import { Link, Navigate } from "react-router-dom"
 import Copywright from "../components/Copywright"
 import { RocketIcon } from "../components/Icons"
+
+import { UserContext } from "../state/UserStore"
+import { LoginAction } from "../action/AuthAction"
+
 import {Container,Input,Label,FormWrapper, InputGroup,SubmitButton,LinkComponent,Para,Heading} from "./styled"
 const Login = ()=>{
+    const {state,dispatch} = useContext(UserContext)
     const [formdata,setFormdata] = useState({
         login:"",
         password:"",
-    })
+    }) 
 
     const InputHandler = (e)=>{
         setFormdata((prev)=>({
@@ -16,23 +21,24 @@ const Login = ()=>{
         }))
     }
 
-    const submitHandler = ()=>{
-        
+    const submitHandler = (e)=>{
+        e.preventDefault()
+        LoginAction(formdata,dispatch)
     }
-
+ 
     return(
         <Container>
             <FormWrapper>
                 <Heading style={{textAlign:"center"}}>Register</Heading>
-                <form>     
+                <form onSubmit={submitHandler}>     
                     <InputGroup>
-                        <Label class="label" for="login" >Email & Username</Label>
-                        <Input name="login" id="login" type="text" onKeyUp={InputHandler} />
+                        <Label htmlFor="login" >Email & Username</Label>
+                        <Input name="login" id="login" type="text" onInput={InputHandler} />
                     </InputGroup>
                    
                     <InputGroup>
-                        <Label class="label" for="password" >Password</Label>
-                        <Input name="password" id="password" type="password" onKeyUp={InputHandler}/>
+                        <Label htmlFor="password" >Password</Label>
+                        <Input name="password" id="password" type="password" onInput={InputHandler}/>
                     </InputGroup>
                     <SubmitButton>
                      <RocketIcon/>

@@ -6,6 +6,7 @@ import { getFindUserQuery } from './utils.js';
 import errorMessages from '../utils/error-messages.js';
 
 export const CheckAuth = async (req, res, next) => {
+  console.log(req.headers.authorization);
   const user = await verifyUser(req.headers.authorization);
   res.ok({ user });
 };
@@ -24,7 +25,8 @@ export const LoginController = asyncHandler(async (req, res) => {
 export const RegisterController = asyncHandler(async (req, res) => {
   const reqBody = req.getBody('name email avatar username password');
   const user = new User(reqBody);
-  await user.validate();
+  console.log(reqBody, user);
+  // await user.validate();
   await user.save();
   res.ok({ user, token: generate(user.id) });
 });

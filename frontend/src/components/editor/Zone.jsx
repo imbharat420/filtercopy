@@ -18,9 +18,11 @@ const Zone = () => {
     filterImage({ id, image }, dispatch);
   };
 
-  socket.on('update-image', (data) => {
-    dispatch({ payload: data, type: 'CHANGE_FILTER_IMAGE' });
-  });
+ 
+   socket?.on && socket?.on('update-image', (data) => {
+      dispatch({ payload: data, type: 'CHANGE_FILTER_IMAGE' });
+    });
+ 
   return (
     <ZoneWrapper className="effects-zone">
       <ul>

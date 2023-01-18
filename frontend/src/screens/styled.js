@@ -12,7 +12,7 @@ export const textCenter = css`
 
 export const Wrapper = styled.div`
   ${center}
-  flex-direction: column;
+  flex-direction: row;
   width: 100%;
   height: 100vh;
 `;
@@ -31,6 +31,8 @@ export const Content = styled.div`
 export const Container = styled(Wrapper)`
   max-width: 1024px;
   margin: 0 auto;
+  padding: 20px;
+  flex-direction: column !important;
 `;
 
 export const Input = styled.input`
@@ -74,7 +76,6 @@ export const FormWrapper = styled.div`
   box-shadow: 0px 0px 31px -3px rgba(0, 0, 0, 0.1);
   border-radius: 10px;
   padding: 20px;
-  margin: 0px 20px;
   @media (max-width: 768px) {
     width: 100%;
   }
@@ -105,10 +106,18 @@ export const SubmitButton = styled.button`
   &:hover svg {
     transform: translateX(5px) rotate(90deg);
   }
+
+  &:focus svg {
+    transform: translateX(5px) rotate(90deg);
+  }
   span {
     transition: transform 0.5s cubic-bezier(0.76, 0, 0.24, 1);
   }
   &:hover span {
+    transform: translateX(7px);
+  }
+
+  &:focus span {
     transform: translateX(7px);
   }
 `;
