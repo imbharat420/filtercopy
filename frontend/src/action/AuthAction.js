@@ -1,6 +1,10 @@
 import AxiosHandler from '../api/AxiosHandler';
 import { getJWT } from '../utils/LocalAuth';
 
+/**
+ * !DESC  LOGIN
+ */
+
 export const LoginAction = async (formData, dispatch) => {
   try {
     let axios = AxiosHandler();
@@ -12,6 +16,9 @@ export const LoginAction = async (formData, dispatch) => {
   }
 };
 
+/**
+ * !DESC  REGISTER
+ */
 export const RegisterAction = async (formData, dispatch) => {
   let axios = AxiosHandler();
   try {
@@ -22,13 +29,15 @@ export const RegisterAction = async (formData, dispatch) => {
   }
 };
 
+/**
+ * !DESC  LOAD USER WHEN REFRESH
+ */
 export const loadUser = async (dispatch) => {
   let axios = AxiosHandler();
   console.log('loadUser', getJWT());
   try {
     const { data } = await axios.get(`/auth/check`);
-    console.log(data);
-    dispatch({ user: data, type: 'LOAD_USER' });
+    dispatch({ payload: data, type: 'LOAD_USER' });
   } catch (err) {
     dispatch({ payload: err.response.data, type: 'ERROR' });
   }

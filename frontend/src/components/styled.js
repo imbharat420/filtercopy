@@ -103,6 +103,56 @@ export const ScreenContainer = styled.div`
   ${center}
 `;
 
+export const HeaderContainer = styled.header`
+  width: 100%;
+  background: linear-gradient(
+      104.19deg,
+      rgba(37, 1, 83, 0) 39.91%,
+      #3b0388 77.15%
+    ),
+    linear-gradient(
+      96.54deg,
+      rgba(6, 189, 196, 0.78) 13.14%,
+      rgba(2, 214, 215, 0) 57.93%
+    ),
+    #440496;
+  /* height: 100px; */
+  color: #fff;
+  display: flex;
+  justify-content: space-between;
+  padding: 0.5rem 1.2rem;
+  box-shadow: 0px 10px 10px rgba(0, 0, 0, 0.5);
+`;
+
+export const CollabContainer = styled.div`
+  display: flex;
+  img {
+    max-width: 100%;
+    display: inline-block;
+    height: 2.25rem;
+    width: 2.25rem;
+    border-radius: 50%;
+    border: 0.2rem solid rgb(0, 128, 9);
+    &:not(:last-child) {
+      margin-right: -0.5rem;
+    }
+  }
+`;
+
+export const AddMoreButton = styled.button`
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  max-width: 100%;
+  height: 2.25rem;
+  width: 2.25rem;
+  border-radius: 50%;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  background-color: rgba(225, 225, 225, 0.5);
+`;
+
 export const FullContainer = styled.div`
   width: 100%;
   height: 100%;
@@ -291,8 +341,8 @@ export const MainWrapper = styled.div`
   flex-direction: column;
   min-width: 300px;
   min-width: 300px;
-  width: 50%;
-  max-width: 500px;
+  /* width: 50%; */
+  /* max-width: 500px; */
   background-color: #fff;
   padding: 3rem;
   border-radius: 10px;

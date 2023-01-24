@@ -5,6 +5,10 @@
     font-family: Open-Sans, Helvetica, Sans-Serif;
 }
 
+ul{
+    list-style: none;
+}
+
 .three-body {
  --uib-size: 35px;
  --uib-speed: 0.8s;

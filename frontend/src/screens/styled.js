@@ -10,6 +10,11 @@ export const textCenter = css`
   text-align: center;
 `;
 
+export const EditorContainer = styled.div`
+  ${center}
+  flex-direction: column;
+`;
+
 export const Wrapper = styled.div`
   ${center}
   flex-direction: row;
@@ -33,6 +38,17 @@ export const Container = styled(Wrapper)`
   margin: 0 auto;
   padding: 20px;
   flex-direction: column !important;
+`;
+
+export const ScreenContainer = styled.div`
+  height: 100vh;
+  width: 100%;
+  ${center}
+`;
+
+export const Box = styled.div`
+  box-shadow: 0px -6px 43px 16px rgba(0, 0, 0, 0.1);
+  border-radius: 20px;
 `;
 
 export const Input = styled.input`

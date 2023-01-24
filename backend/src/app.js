@@ -32,8 +32,15 @@ app.use(
   })
 );
 
-// ----  set and Add Middleware -- //
+import fs from 'fs';
+import path, { dirname } from 'path';
+import { fileURLToPath } from 'url';
 
+// ----  set and Add Middleware -- //
+const __dirname = dirname(fileURLToPath(import.meta.url));
+const p = path.join(__dirname, '..', '/public');
+console.log(p);
+app.use(express.static(p));
 app.use(httpResponder);
 app.request.getBody = getBody;
 
@@ -57,7 +64,7 @@ app.use('*', (req, res) => {
   res.send('Page Not Found');
 });
 
-handleError(app);
+// handleError(app);
 
 export default app;
 

@@ -1,52 +1,22 @@
 import {useContext} from "react";
-
-
-import Topbar from "../components/editor/Topbar";
-import BottomBar from "../components/editor/BottomBar";
-
-import Image from "../components/editor/Image";
-import Sidebar from "../components/editor/Sidebar";
-import Zone from "../components/editor/Zone";
-import Subsidebar from "../components/editor/Subsidebar";
-import Error from "../components/Error";
+import { Link } from "react-router-dom";
+import { UserContext } from "../state/UserStore";
 
 
 
-
-// import bg from "../assets/bg.jpg"
-
-import DragAndDropImage from "../components/editor/DragAndDropImage";
-
-
-import useTitle from "../hooks/useTitle"
-import {StoreContext} from "../state/store"
-import {CanvasProvider} from "../state/canvas"
-
-
-// Styled Components
-import {Wrapper,Content} from "./styled"
-
-
-
-const Home = ()=>{
-    const { state } = useContext(StoreContext)
-    console.log(state);
-    useTitle("FilterCopy","😭 Come Back")
+const Home = ()=>{  
+  const {state} = useContext(UserContext) 
+    const {user:{username}} = state;
     return(
-       <Wrapper>
-            {state.error && <Error/>}
-            <Sidebar/>
-            <Subsidebar/>
-            <Zone/>
-            <Content>
-                {state.image?.url !== undefined ? (
-                  <CanvasProvider> 
-                    <Topbar/>
-                    <Image />  
-                    <BottomBar/>
-                  </CanvasProvider>) : <DragAndDropImage />} 
-            </Content>
-       </Wrapper>
+      <div>
+           {username}
+           <ul>
+            <li><Link to="/create">create</Link></li>
+            <li><Link to="/login">Login</Link></li>
+            <li> <Link to="/register">Register</Link></li>
+             {username && <li> <Link to={`/profile/${username}`}>Profile {username}</Link></li>}
+           </ul>
+       </div>
     )
 }
 

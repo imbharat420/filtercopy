@@ -16,7 +16,8 @@ const socketEvent = {
   // },
 
   ['update-image'](image) {
-    states.image = image;
+    states.filteredImage = image;
+    console.log(image);
   },
 };
 

@@ -1,28 +1,23 @@
 import { Router } from 'express';
-import multer from 'multer';
 import path from 'path';
 import {
   renderController,
   uploadController,
+  getByTemplateIdController,
 } from '../controller/editController.js';
+import fileUpload from '../utils/fileUpload.js';
+import CheckAuth from '../middleware/auth-middleware.js';
 
 const routes = Router();
 
-// var storage = multer.diskStorage({
-//   destination: function (req, file, cb) {
-//     console.log(file);
-//     cb(null, 'uploads/');
-//   },
-//   filename: function (req, file, cb) {
-//     console.log(file);
-//     cb(null, Date.now() + path.extname(file.originalname)); //Appending extension
-//   },
-// });
+routes.post('/render', CheckAuth, renderController);
+routes.post(
+  '/upload',
+  CheckAuth,
+  fileUpload.single('avatar'),
+  uploadController
+);
 
-// var upload = multer({ storage: storage });
-var upload = multer();
-
-routes.post('/render', renderController);
-routes.post('/upload', upload.single('avatar'), uploadController);
+routes.get('/design/:id', getByTemplateIdController);
 
 export default routes;

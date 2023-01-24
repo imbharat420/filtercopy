@@ -25,18 +25,20 @@ const reducer = (state = states, action) => {
     case 'CHANGE_EFFECT':
       return { ...state, effects: payload, loading: false };
     case 'CHANGE_IMAGE':
+      console.log('CHANGE_IMAGE', payload);
       return {
         ...state,
-        image: payload,
-        filteredImage: payload,
+        image: payload.currentImage,
+        filteredImage: payload.currentImage,
         loading: false,
       };
     case 'CHANGE_FILTER_IMAGE':
       return {
         ...state,
-        filteredImage: payload,
+        image: payload.currentImage,
+        filteredImage: payload.currentImage,
         loading: false,
-        history: [...state.history, payload],
+        history: [...state.history, payload.currentImage],
       };
     case 'SIDEBAR_INDEX':
       return {

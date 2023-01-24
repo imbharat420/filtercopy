@@ -3,3 +3,4 @@ node_modules
 data.json
 data1.json
 uploads/* 
+backend/public/uploads/images/*

@@ -1,27 +1,19 @@
 import React, { useRef, useState, useContext } from 'react';
 import { MainWrapper, Spinner, CenterWrapper, Code, Para } from '../styled';
-import AxiosHandler from '../../api/AxiosHandler';
+
 import { StoreContext } from '../../state/store';
 
 import usePasteEvent from '../../hooks/usePasteEvent';
 import { Image, Upload } from '../Icons';
 
-const imgAxios = async (formData, dispatch) => {
-  try {
-    let axios = AxiosHandler();
-    const { data } = await axios.post('/edit/upload', formData, {
-      headers: {
-        'Content-Type': 'multipart/form-data',
-      },
-    });
-    return data;
-  } catch (err) {
-    dispatch({ type: 'ERROR', payload: err.response?.data });
-    console.log('errpr', err);
-  }
-};
+import {imgAxios} from "../../action/ImageAction"
+import { useNavigate } from 'react-router-dom';
+
 
 function DragAndDropImage() {
+  const navigate = useNavigate();
+
+
   const { state, dispatch } = useContext(StoreContext);
   const [image, setImage] = useState(null);
   let [formData, setFormData] = useState({});
@@ -48,20 +40,31 @@ function DragAndDropImage() {
     }
   });
 
+
+
+  /** 
+   * @Desc send image on server
+   */
+
+
   const sendImage = async () => {
     if (!image) {
       imageInputRef.current.click();
       return;
     }
 
+    if (image === undefined){
+      // check if File otherwise show error
+       dispatch({ payload: "Attach a file", type: 'ERROR' });
+      return
+    };
+    
+
     // send image to server
-    if (image === undefined) return;
     dispatch({ type: 'LOADING' });
     let data = await imgAxios({ avatar: formData }, dispatch);
-    if (data) {
-      dispatch({ payload: data, type: 'CHANGE_IMAGE' });
-    }
-  };
+    navigate(`/design/${data?.id}`);
+};
 
   return (
     <MainWrapper onDrop={handleDrop} onDragOver={(e) => e.preventDefault()}>
@@ -92,7 +95,7 @@ function DragAndDropImage() {
           style={{ display: 'none' }}
           accept="image/*"
         />
-      </div>
+      </div> 
 
       <button className="btn" onClick={sendImage} style={{ width: '100%' }}>
         {image ? (

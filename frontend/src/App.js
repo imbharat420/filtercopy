@@ -14,26 +14,34 @@ import RequiredAuth from './utils/RequiredAuth';
 
 import { loadUser } from './action/AuthAction';
 import Loading from './components/Loading';
+import useTitle from './hooks/useTitle';
+
+import Design from './screens/editor/Design';
+import CreateDesign from './screens/editor/CreateDesign';
 
 const Home = react.lazy(() => import('./screens/Home'));
 const About = react.lazy(() => import('./screens/About'));
 const Contact = react.lazy(() => import('./screens/Contact'));
 const NotFound = react.lazy(() => import('./screens/NotFound'));
-const Login = react.lazy(() => import('./screens/Login'));
-const Register = react.lazy(() => import('./screens/Register'));
+const Login = react.lazy(() => import('./screens/auth/Login'));
+const Register = react.lazy(() => import('./screens/auth/Register'));
 
 function App() {
   const { state, dispatch } = useContext(UserContext);
+  useTitle('FilterCopy', '😭 Come Back');
   useEffect(() => {
     if (socket) return;
     updateSocket();
-  }, []);
+  }, [socket]);
 
   useEffect(() => {
     localStorage.token && loadUser(dispatch);
-    window.addEventListener('storage', () => {
+    const storageListener = () => {
       localStorage.token && dispatch({ type: 'LOGOUT' });
-    });
+    };
+
+    window.addEventListener('storage', storageListener);
+    return () => window.removeEventListener('storage', storageListener);
   }, []);
 
   return (
@@ -43,6 +51,7 @@ function App() {
 
         <Router>
           <Routes>
+            {/* // !Auth ROUTE  */}
             {!!state.token === false ? (
               <>
                 <Route path={'/login'} element={<Login />} />
@@ -50,17 +59,24 @@ function App() {
               </>
             ) : (
               <>
-                <Route path={'/login'} element={<Navigate to="/" />} />
-                <Route path={'/register'} element={<Navigate to="/" />} />
+                <Route path={'/login'} element={<Navigate to={`/`} />} />
+                <Route path={'/register'} element={<Navigate to={`/`} />} />
               </>
             )}
 
+            {/* // !Private ROUTE  */}
             <Route element={<RequiredAuth />}>
-              <Route path="/" element={<Home />} exact />
-              <Route path="/about" element={<About />} />
-              <Route path="/contact" element={<Contact />} />
+              <Route path={`/create`} element={<CreateDesign />} exact />
+              <Route path={`/design/:id`} element={<Design />} exact />
             </Route>
 
+            {/* // !PUBLIC ROUTE  */}
+            <Route path={`/`} element={<Home />} exact />
+            <Route path={`/profile/:username`} element={<Home />} exact />
+            <Route path="/about" element={<About />} />
+            <Route path="/contact" element={<Contact />} />
+
+            {/* // !REDIRECT ROUTE  */}
             <Route path="404" element={<NotFound />} />
             <Route path="*" element={<Navigate to="/404" />} />
           </Routes>

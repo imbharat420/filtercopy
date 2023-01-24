@@ -1,12 +1,12 @@
 import { useState,useContext } from "react"
 import { Link, Navigate } from "react-router-dom"
-import Copywright from "../components/Copywright"
-import { RocketIcon } from "../components/Icons"
+import Copywright from "../../components/Copywright"
+import { RocketIcon } from "../../components/Icons"
 
-import { UserContext } from "../state/UserStore"
-import { LoginAction } from "../action/AuthAction"
+import { UserContext } from "../../state/UserStore"
+import { LoginAction } from "../../action/AuthAction"
 
-import {Container,Input,Label,FormWrapper, InputGroup,SubmitButton,LinkComponent,Para,Heading} from "./styled"
+import {Container,Input,Label,FormWrapper, InputGroup,SubmitButton,LinkComponent,Para,Heading} from "../styled"
 const Login = ()=>{
     const {state,dispatch} = useContext(UserContext)
     const [formdata,setFormdata] = useState({

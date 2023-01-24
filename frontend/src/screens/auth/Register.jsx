@@ -1,11 +1,11 @@
 import {useContext,useState} from "react"
 import { Link } from "react-router-dom"
-import Copywright from "../components/Copywright"
-import { RocketIcon } from "../components/Icons"
-import {Container,Input,Label,FormWrapper, InputGroup,SubmitButton,LinkComponent,Para,Heading} from "./styled"
+import Copywright from "../../components/Copywright"
+import { RocketIcon } from "../../components/Icons"
+import {Container,Input,Label,FormWrapper, InputGroup,SubmitButton,LinkComponent,Para,Heading} from "../styled"
 
-import { UserContext } from "../state/UserStore"
-import { RegisterAction } from "../action/AuthAction"
+import { UserContext } from "../../state/UserStore"
+import { RegisterAction } from "../../action/AuthAction"
 
 const Register = ()=>{
    const {state,dispatch} = useContext(UserContext)
