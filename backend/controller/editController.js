@@ -4,10 +4,6 @@ import multer from 'multer';
 import fs from 'fs';
 import path, { dirname } from 'path';
 import { fileURLToPath } from 'url';
-
-const __dirname = dirname(fileURLToPath(import.meta.url));
-
-// import formidable from 'formidable';
 import FormData from 'form-data';
 
 import request from 'request';
@@ -23,6 +19,8 @@ function convertImageToBase64(imageUrl) {
     });
   });
 }
+
+const __dirname = dirname(fileURLToPath(import.meta.url));
 
 const uploadController = asyncHandler(async (req, res) => {
   if (!req.file) {
@@ -48,13 +46,13 @@ const uploadController = asyncHandler(async (req, res) => {
       },
     });
     console.log(data);
-    res.status(200).json({
+    res.ok({
       id: data.id,
       name: req.file.filename,
       ...data,
     });
   } catch (err) {
-    res.status(400).send({
+    res.BAD_REQUEST({
       message: err.message,
     });
   }
@@ -77,17 +75,12 @@ const renderController = asyncHandler(async (req, res) => {
       data: formData,
     });
     console.log(data);
-    return res.status(200).json(data);
+    return res.ok(data);
   } catch (err) {
-    res.status(400).json({
+    res.BAD_REQUEST({
       erorr: 'BACKEND axios ' + err,
     });
   }
 });
 
 export { uploadController, renderController };
-
-// const filePath = path.join(__dirname, '../uploads/' + req.file.filename);
-
-// const formData = new FormData();
-// formData.append('file', fs.createReadStream(filePath));

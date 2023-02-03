@@ -20,5 +20,4 @@ const constants = {
   PORT: 5000,
 };
 
-
 export default constants;
