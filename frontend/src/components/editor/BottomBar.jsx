@@ -10,11 +10,11 @@ import {
   BottombarContainer,
   IconContainer,
 } from '../styled';
-import { CanvasContext } from '../../state/canvas';
+import { useCanvasContext } from '../../state/canvas';
 import useFullScreen from '../../hooks/useFullScreen';
 import Tooltip from '../Tooltip';
 const BottomBar = () => {
-  const canvasRef = useContext(CanvasContext);
+  const canvasRef = useCanvasContext();
   const handleClick = useFullScreen(canvasRef);
 
   return (

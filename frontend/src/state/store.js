@@ -29,6 +29,7 @@ const reducer = (state = states, action) => {
       return {
         ...state,
         image: payload.currentImage,
+        uploadedImage: payload.uploadedImage,
         filteredImage: payload.currentImage,
         loading: false,
       };
@@ -37,6 +38,7 @@ const reducer = (state = states, action) => {
         ...state,
         image: payload.currentImage,
         filteredImage: payload.currentImage,
+        uploadedImage: payload.uploadedImage,
         loading: false,
         history: [...state.history, payload.currentImage],
       };

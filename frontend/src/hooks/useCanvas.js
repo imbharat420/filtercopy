@@ -7,12 +7,16 @@ const useCanvas = (url, canvasRef) => {
     const image = new Image();
 
     image.onload = () => {
+      console.log('image onload', image, canvas);
       ctx.drawImage(image, 0, 0);
     };
-
+    console.log('url', url, image);
     image.src = url;
     image.crossOrigin = 'anonymous';
-  }, [url]);
+    return () => {
+      image.onload = null;
+    };
+  }, [url, canvasRef]);
 };
 
 export default useCanvas;

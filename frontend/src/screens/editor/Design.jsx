@@ -29,18 +29,18 @@ import {Wrapper,Content,EditorContainer} from "../styled"
 const Design = ()=>{
     const { state:{error,image,loading},dispatch } = useContext(StoreContext)
     const {id} = useParams();
-
+    
 
     useEffect(()=>{
       const func = async ()=>{
         await getImgByIdAxios(id,dispatch);
       }
       func();
-    },[])
+    },[id])
     
     return(
       <EditorContainer>
-            <Header/>
+            {/* <Header/> */}
               {error && <Error/>}
             
                <Wrapper>

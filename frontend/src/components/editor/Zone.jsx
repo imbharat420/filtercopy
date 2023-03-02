@@ -16,7 +16,7 @@ const Zone = () => {
   const {id} = useParams();
 
   const {
-    state:{ image, effects, currentEffectIndex, currentZoneIndex },
+    state:{ image,uploadedImage, effects, currentEffectIndex, currentZoneIndex },
     dispatch,
   } = useContext(StoreContext);
 
@@ -24,7 +24,7 @@ const Zone = () => {
   
   const setFilterImage = async (effectId) => {
     if(id && image?.id){
-        await filterImage({ effectId, photoId: image.id,tid:id }, dispatch);
+        await filterImage({ effectId, photoId: uploadedImage.id,tid:id }, dispatch);
     }
   };
 

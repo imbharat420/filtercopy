@@ -7,12 +7,11 @@ import { socket } from '../socket';
 export const filterImage = async ({ effectId, photoId, tid }, dispatch) => {
   dispatch({ type: 'LOADING' });
   const filterData = { effectId, photoId, tid };
-  console.log('action/filterImage', filterData);
+  console.log('action/filterImage', filterData, photoId);
 
   try {
     let axios = AxiosHandler();
     const { data } = await axios.post(`/edit/render`, filterData);
-    console.log(data);
     if (data) {
       dispatch({ payload: data, type: 'CHANGE_FILTER_IMAGE' });
       socket && socket.emit('image', data);

@@ -29,6 +29,9 @@ const TemplateSchema = mongoose.Schema(
     uploadedImage: {
       type: {
         url: String,
+        id: String,
+        width: Number,
+        height: Number,
         expires_at: String,
       },
       required: true,

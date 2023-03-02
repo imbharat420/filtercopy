@@ -49,6 +49,8 @@ export const uploadController = asyncHandler(async (req, res) => {
         url: path,
         id: data.id,
         expires_at: data.expires_at,
+        width: data.width,
+        height: data.height,
       },
       user: user.id,
     }).save();
@@ -94,7 +96,7 @@ export const renderController = asyncHandler(async (req, res) => {
     user,
     body: { photoId, effectId, tid },
   } = req;
-  console.log(photoId, effectId);
+  console.log('PHOTOID', { photoId, effectId });
   if (!photoId || !effectId) {
     return res.status(400).json({ message: 'photoId & effectId are required' });
   }
@@ -120,8 +122,12 @@ export const renderController = asyncHandler(async (req, res) => {
           height: data.height,
         };
         let updated = await Template.findByIdAndUpdate(
-          { _id: newTemplate._id },
-          { $set: { currentImage }, $push: { images: currentImage } }
+          newTemplate._id,
+          {
+            $set: { currentImage },
+            $push: { images: currentImage },
+          },
+          { new: true }
         );
 
         // console.log({ currentImage, data });

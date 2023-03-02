@@ -1,7 +1,7 @@
-import React, { useEffect, useState,useContext } from 'react';
+import React, { useEffect, useState } from 'react';
 
 
-import { CanvasContext } from '../../state/canvas';
+import { useCanvasContext } from '../../state/canvas';
 import { ImageContainer, FullContainer, Loading, Spinner } from '../styled';
 
 import useZoom from '../../hooks/useZoom';
@@ -10,21 +10,17 @@ import useFullScreen from '../../hooks/useFullScreen';
 import useCanvas from '../../hooks/useCanvas';
 // import download from '../hooks/useDownload';
 
- 
-
-
-
 let URL = `http://localhost:8000/uploads/images/`;
 
 const Image = ({
-  currentImage,loading
+  currentImage,loading 
 }) => {
-  const canvasRef = useContext(CanvasContext);
+  const canvasRef = useCanvasContext();
   const [url, setUrl] = useState(null);
  
   useEffect(() => {
     setUrl(URL + currentImage?.url);
-  }, [currentImage?.url]);
+  }, [currentImage]);
 
   // ! HOOKS 
   useCanvas(url,canvasRef); //CANVAS RENDER
@@ -43,6 +39,7 @@ const Image = ({
               height={`${currentImage?.height}px`}
               onDoubleClick={handleClick}
             ></canvas>
+            <img src={url} alt={currentImage?.name} style={{width:currentImage?.width+'px',height:currentImage?.height+'px'}} />
             {loading && (
               <Loading
                 width={currentImage?.width}

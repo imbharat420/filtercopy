@@ -1,6 +1,6 @@
 import { useContext, useEffect, useState } from 'react';
 import { StoreContext } from '../../state/store';
-import { CanvasContext } from '../../state/canvas';
+import { useCanvasContext } from '../../state/canvas';
 import { TopbarContainer, IconContainer, CenterWrapper } from '../styled';
 import { Delete, TimeIcon, DownloadImage } from '../Icons';
 // import { download, copy } from '../hooks/useDownload';
@@ -9,14 +9,14 @@ import { CopyIcon } from '../Icons';
 import Tooltip from '../Tooltip';
 const Topbar = () => {
   const { state, dispatch } = useContext(StoreContext);
-  const canvasRef = useContext(CanvasContext);
+  const canvasRef = useCanvasContext();
 
   const [download, copy, isCopied] = useCanvasClipboard(canvasRef);
 
   useEffect(() => {
     console.log('isCopied', isCopied);
   }, [isCopied]);
-  const [value, setValue] = useState('Expires at ' + state.image?.expires_at);
+  const [value, setValue] = useState('Expires at ' + state.uploadedImage?.expires_at);
 
   const handleImageChange = (e) => {
     dispatch({ type: 'REMOVE_IMAGE' });

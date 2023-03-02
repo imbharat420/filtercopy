@@ -20,11 +20,7 @@ import authRoute from './routes/auth.js';
 
 app.set('env', process.env.NODE_ENV);
 app.set('json spaces', 2);
-// app.set('trust proxy', 1);
-// app.set('x-powered-by', false);
-// app.set('case sensitive routing', true);
-// app.set('strict routing', true);
-// app.set('view cache', true);
+
 app.use(
   cors({
     credentials: true,
@@ -35,7 +31,6 @@ app.use(
 import fs from 'fs';
 import path, { dirname } from 'path';
 import { fileURLToPath } from 'url';
-
 // ----  set and Add Middleware -- //
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const p = path.join(__dirname, '..', '/public');
