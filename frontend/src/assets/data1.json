@@ -1,0 +1,30 @@
+{
+   "sidebar":[
+      {
+         "id":"52106f1792237be877cc7291",
+         "name":"Artistic",
+         "order":1,
+         "enabled":true,
+         "zones":[
+            {
+               "id":"5210704092237bed7756aaee",
+               "name":"Filters",
+               "category":"52106f1792237be877cc7291",
+               "enabled":true,
+               "image_url":"d3iqv7nekb4k6t.cloudfront.net\/zones\/52b91ca8e2e8fbcff8cf565626c1226c.jpg",
+               "effects":[
+                  {
+                     "id":"5210855492237be9770f2e34",
+                     "api_id":"520fe08792237bea7734b40c",
+                     "categories":[],
+                     "enabled":true,
+                     "image_url":"d3iqv7nekb4k6t.cloudfront.net\/effects\/0173314543729064f30c61e11c242b8c.jpg",
+                     "name":"Paretro",
+                     "zones":["5210704092237bed7756aaee"]
+                  }
+                ]
+            }
+        ]
+      }
+   ]
+}
